@@ -26,5 +26,5 @@ if($_SERVER['REQUEST_METHOD']=='POST')
 
 if($_SERVER['REQUEST_METHOD']=='GET')
 {
-    require_once __DIR__."/../views/book_add_view.php";
+    require_once __DIR__."/../views/inscription_view.php";
 }

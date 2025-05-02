@@ -12,6 +12,6 @@
 
 <header>
     <div>
-    <img src="../public\img\SCAN'EAT_Ecriture (1).png" alt="Scan Eat">
+    <img src="public/img/SCAN'EAT_Ecriture.png" alt="Scan Eat">
     </div>
 </header>

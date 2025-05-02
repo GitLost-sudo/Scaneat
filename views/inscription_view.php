@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page d'inscription</title>
 </head>
-<link rel="stylesheet" href="../public\styles\inscription.css">
+<link rel="stylesheet" href="public\styles\inscription.css">
 <body> 
 <?php include('header.php'); ?>
 <div class="inscription">
     Inscription
 </div>
-<form action="/controllers/inscription_controller.php" method="POST" class="form-example">
+<form action="controllers/inscription_controller.php" method="POST" class="form-example">
 <div class="form-example">
     <label for="username">Enter your username: </label>
     <input type="text" name="username" id="username" required />
