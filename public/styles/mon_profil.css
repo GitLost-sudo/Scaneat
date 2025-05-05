@@ -37,16 +37,8 @@ main {
     background-color: #ffe680;
     cursor: pointer;
 }
-#header_container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-#header_logo{
-    width: 3em;
-}
 #header_ecriture{
-    width: 8em;
+    width: 10em;
 }
 h1 {
     margin-top: 0;
