@@ -3,7 +3,8 @@ html {
 }
 body{
     background-color: #f0efe0;
-    margin: 0 35% 0 35%;
+    margin: 0;
+    /*margin: 0 35% 0 35%;*/
     overflow: hidden;
 }
 header, nav{
@@ -29,7 +30,7 @@ main {
 }
 .header_icon, .nav_icon{
     width: 2em;
-    background-color: white;
+    /*background-color: white;*/
     padding: 0.5em;
     border-radius: 50%;
 }
