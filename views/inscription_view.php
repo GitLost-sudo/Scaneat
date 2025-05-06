@@ -13,15 +13,15 @@
 </div>
 <form action="controllers/inscription_controller.php" method="POST" class="form-example">
 <div class="form-example">
-    <label for="username">Enter your username: </label>
+    <label for="username">Nom: </label>
     <input type="text" name="username" id="username" required />
   </div>
 <div class="form-example">
-    <label for="email">Enter your email: </label>
+    <label for="email">Email: </label>
     <input type="email" name="email" id="email" required />
   </div>
   <div class="form-example">
-    <label for="password">Enter your password: </label>
+    <label for="password">Mot de passe: </label>
     <input type="password" name="password" id="password" required />
   </div>
   <div class="form-example">
