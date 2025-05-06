@@ -47,7 +47,9 @@ if (isset($_POST['valider'])) {
                 <img src="../img/ecriture.png">
             </div>
             <div class="home-icon">
-                <img src="../img/home.png">
+                <a href="authentification.php">
+                    <img src="../img/home.png">
+                </a>
             </div>
         </header>
         <div class="TitreRecuperationMDP"> Email du compte que vous voulez récupérer :</div>

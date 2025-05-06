@@ -51,7 +51,9 @@ if (isset($_GET['id'])) { // Vérifie si LIDENTIFIANT est présent dans l'URL, c
                 <img src="../img/ecriture.png">
             </div>
             <div class="home-icon">
-                <img src="../img/home.png">
+                <a href="authentification.php">
+                    <img src="../img/home.png">
+                </a>
             </div>
         </header>
         <form action="" method="POST">
