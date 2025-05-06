@@ -1,5 +1,4 @@
 CREATE DATABASE ScanEat DEFAULT CHARACTER SET = 'utf8mb4';
-DROP TABLE compte;
 USE ScanEat;
 
 CREATE TABLE `compte`(
