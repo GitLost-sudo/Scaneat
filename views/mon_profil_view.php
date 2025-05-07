@@ -15,7 +15,7 @@
         <h1>Profil</h1>
         <form id="password_reinitialisation" action="" method="post">
             <label for="email">Email :</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" value="<?= $user['email'] ?>" required readonly>
 
             <label for="actual_password">Mot de passe actuel :</label>
             <input type="password" id="actual_password" name="actual_password" required>
