@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./../public/styles/inscription.css">
 </head>
 <body> 
-<?php
-require_once __DIR__.'/../views/header_view.php';
-?>
+<header>
+    <img id="header_ecriture" src="../public/img/ecriture.png" alt="Scan'Eat">
+</header>
 <main>
   <div class="inscription">
       Inscription
@@ -33,8 +33,6 @@ require_once __DIR__.'/../views/header_view.php';
     </div>
   </form>
 </main>
-<?php
-require_once __DIR__.'/../views/navbar_view.php';
-?>
+<nav></nav>
 </body>
 </html>
