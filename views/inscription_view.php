@@ -12,15 +12,6 @@
 <div class="inscription">
     Inscription
 </div>
-<form action="../controllers/inscription_controller.php" method="POST" class="form-example">
-<div class="form-example">
-    <label for="username">Enter your username: </label>
-    <input type="text" name="username" id="username" required />
-  </div>
-<div class="form-example">
-    <label for="email">Enter your email: </label>
-    <input type="email" name="email" id="email" required />
-  </div>
   <form action="controllers/inscription_controller.php" method="POST" class="form-example">
   <div class="form-example">
       <label for="username">Nom: </label>
