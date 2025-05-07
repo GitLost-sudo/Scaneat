@@ -30,6 +30,5 @@
     </div>
   </form>
 </main>
-<nav></nav>
 </body>
 </html>
