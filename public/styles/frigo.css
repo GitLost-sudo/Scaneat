@@ -1,24 +1,3 @@
-body{
-    background-color: #f0efe0;
-    margin: 0;
-    overflow: hidden;
-}
-header, nav{
-    background-color: #ff914d;
-    height: 10vh;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    bottom: 0;
-}
-header{
-    border-radius: 0 0 1em 1em;
-}
-nav {
-    border-radius: 1em 1em 0 0;
-}
 main {
     height: 80vh;
     overflow-y: scroll;
@@ -27,19 +6,6 @@ main {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-}
-.header_icon, .nav_icon{
-    width: 2em;
-    /*background-color: white;*/
-    padding: 0.5em;
-    border-radius: 50%;
-}
-.header_icon:hover, .nav_icon:hover{
-    background-color: #ffe680;
-    cursor: pointer;
-}
-#header_ecriture{
-    width: 10em;
 }
 h1{
     background-color: #9b9b9b;
