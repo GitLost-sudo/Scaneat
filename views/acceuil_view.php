@@ -61,7 +61,7 @@ $alertes = [
 <!-- Affichage des alertes de péremption -->
     <?php foreach($alertes as $alerte): ?>
     <?php  
-        $categorie = strtolower($alerte['catégorie']);
+        $categorie = $alerte['catégorie'];
         $icone = $icones[$categorie] ?? $icones['autres']; 
     ?>
         <div class="notification">
