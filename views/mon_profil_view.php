@@ -29,19 +29,15 @@
         <div class="recette_container">
             <h2>Mes recettes favorites</h2>
             <?php
-            // Boucle foreach pour afficher les recettes favorites
+            // foreach ($recettes as $recette) {
             ?>
             <div class="recette">
-                <a href="#"><img class="image_recette" src="<?= $recette['image'] ?>" alt="image de la recette"></a>
+                <a href="#"><img class="image_recette" src="../public/img/<?= $recette['image'] ?>" alt="image de la recette"></a>
                 <a href="#"><img class="star_icon" src="../public/icons/star_full.png" alt="icon deja favori"></a>
-                <h3>Nom de la recette<!--<?= $recette['nom'] ?>--></h3>
-            </div>
-            <div class="recette">
-                <a href="#"><img class="image_recette" src="<?= $recette['image'] ?>" alt="image de la recette"></a>
-                <a href="#"><img class="star_icon" src="../public/icons/star_full.png" alt="icon deja favori"></a>
-                <h3>Nom de la recette<!--<?= $recette['nom'] ?>--></h3>
+                <h3>Nom de la recette<!--<?= $recette['name'] ?>--></h3>
             </div>
             <?php
+            // }
             ?>
         </div>
     </main>

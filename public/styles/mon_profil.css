@@ -106,3 +106,8 @@ input[type="submit"]:hover{
 .star_icon{
     width: 2em;
 }
+.image_recette{
+    height: 100%;
+    width: auto;
+    border-radius: 1em
+}
