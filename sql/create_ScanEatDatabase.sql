@@ -14,6 +14,5 @@ CREATE TABLE `frigo` (
  `catégorie`VARCHAR(255),
  `quantite`INT,
  `date_peremption`DATE,
- FOREIGN KEY (`compte_id`) REFERENCES `compte`(`compte_id`),
-
-)
+ FOREIGN KEY (`compte_id`) REFERENCES `compte`(`compte_id`)
+);
