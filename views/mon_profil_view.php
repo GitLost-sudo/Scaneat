@@ -9,7 +9,7 @@
 </head>
 <body>
     <?php
-    require_once __DIR__.'/../views/header_view.php';
+    require_once __DIR__.'/header_org.php';
     ?>
     <main>
         <h1>Profil</h1>
@@ -41,7 +41,7 @@
         </div>
     </main>
     <?php
-    require_once __DIR__.'/../views/navbar_view.php';
+    require_once __DIR__.'/../views/nav_bar.php';
     ?>
 </body>
 </html>
