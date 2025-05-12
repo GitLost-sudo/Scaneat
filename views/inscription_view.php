@@ -8,13 +8,10 @@
     <link rel="stylesheet" href="./../public/styles/inscription.css">
 </head>
 <body> 
-<header>
-    <img id="header_ecriture" src="../public/img/ecriture.png" alt="Scan'Eat">
-</header>
-<main>
-  <div class="inscription">
-      Inscription
-  </div>
+<?php include('header.php'); ?>
+<div class="inscription">
+    Inscription
+</div>
   <form action="controllers/inscription_controller.php" method="POST" class="form-example">
   <div class="form-example">
       <label for="username">Nom: </label>
@@ -33,6 +30,5 @@
     </div>
   </form>
 </main>
-<nav></nav>
 </body>
 </html>
