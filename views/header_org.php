@@ -45,12 +45,12 @@
 
 <header>
     <div class="iconemaison">
-        <a href="../views/acceuil_view.php"><img src="../public/icons/accueil.png" alt="Maison"></a>
+        <a href="../controllers/accueil_controller.php"><img src="../public/icons/accueil.png" alt="Maison"></a>
     </div>
     <div class="logo">
         <img src="../public/img/SCAN'EAT_Ecriture.png" alt="Scan Eat">
     </div>
     <div class="iconemenu">
-        <a href="#"><img src="../public/icons/utilisateur.png" alt="Menu"></a>
+        <a href="../controllers/mon_profil_controller.php"><img src="../public/icons/utilisateur.png" alt="Menu"></a>
     </div>
 </header>

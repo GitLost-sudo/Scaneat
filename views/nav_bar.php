@@ -52,11 +52,11 @@ nav p {
 
 <nav>
     <div class="navbar_scanner">
-        <a href="#"><img src="../public/icons/codebarre_icone.png" alt="scanner"></a>
+        <a href="../controllers/scanner_controller.php"><img src="../public/icons/codebarre_icone.png" alt="scanner"></a>
         <p>Scanner</p>
     </div>
     <div class="navbar_frigo">
-        <a href="#"><img src="../public/icons/frigo_icone.png" alt="frigo"></a>
+        <a href="../controllers/frigo_controller.php"><img src="../public/icons/frigo_icone.png" alt="frigo"></a>
         <p>Frigo</p>
     </div>
     <div class="navbar_recette">
