@@ -16,9 +16,9 @@ nav {
     z-index: 1000;
 }
 
-nav .scanner,
-nav .frigo,
-nav .recette {
+nav .navbar_scanner,
+nav .navbar_frigo,
+nav .navbar_recette {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -51,15 +51,15 @@ nav p {
 </style>
 
 <nav>
-    <div class="scanner">
+    <div class="navbar_scanner">
         <a href="#"><img src="../public/icons/codebarre_icone.png" alt="scanner"></a>
         <p>Scanner</p>
     </div>
-    <div class="frigo">
+    <div class="navbar_frigo">
         <a href="#"><img src="../public/icons/frigo_icone.png" alt="frigo"></a>
         <p>Frigo</p>
     </div>
-    <div class="recette">
+    <div class="navbar_recette">
         <a href="#"><img src="../public/icons/recettes_icones.png" alt="recettes"></a>
         <p>Recettes</p>
     </div>
