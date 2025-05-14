@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
             type: "LiveStream",
             target: document.querySelector('#scanner-container'),
             constraints: {
-                facingMode: "environment" // arrière du téléphone
+                facingMode: "environment"
             }
         },
         decoder: {
@@ -102,13 +102,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let scanned = false;
 
     Quagga.onDetected((data) => {
-        if (scanned) return; // éviter les doublons
+        if (scanned) return;
         scanned = true;
 
         const code = data.codeResult.code;
         document.getElementById("resultat-scan").textContent = "Code détecté : " + code;
 
-        // 🔎 Requête à l'API OpenFoodFacts
         fetch(`https://world.openfoodfacts.org/api/v0/product/${code}.json`)
             .then(response => response.json())
             .then(data => {
@@ -127,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     `;
                 }
 
-                Quagga.stop(); // Stopper le scanner
+                Quagga.stop();
             })
             .catch(err => {
                 console.error("Erreur lors de la récupération du produit :", err);
