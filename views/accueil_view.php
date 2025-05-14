@@ -8,7 +8,7 @@
 
 </head>
 
-<link rel="stylesheet" href="..\public\styles\acceuil.css">
+<link rel="stylesheet" href="..\public\styles\accueil.css">
 <body>
 <?php include '../views/header_org.php'; ?>
 <div class ="T1">

@@ -23,3 +23,5 @@ if($_SERVER['REQUEST_METHOD']=='POST')
         $error = $result;
     }
 }
+
+require_once __DIR__."/../views/inscription_view.php";
