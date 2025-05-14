@@ -9,7 +9,7 @@
 </head>
 <body>
     <?php
-    require_once __DIR__.'/../views/header_view.php';
+    require_once __DIR__.'/../views/header_org.php';
     ?>
     <main>
         <h1>Mon Frigo</h1>
@@ -30,7 +30,7 @@
         <a href="../controllers/#" class="add_product">Ajouter un<br>produit</a>
     </main>
     <?php
-    require_once __DIR__.'/../views/navbar_view.php';
+    require_once __DIR__.'/../views/nav_bar.php';
     ?>
 </body>
 </html>
