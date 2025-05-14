@@ -6,7 +6,6 @@
     <title>Scanner</title>
     <link rel="stylesheet" href="../public/styles/common.css">
     <link rel="stylesheet" href="../public/styles/scanner.css">
-    <script src="https://unpkg.com/@ericblade/quagga2/dist/quagga.min.js"></script>
 </head>
 <body>
     <?php
@@ -15,10 +14,7 @@
     <main>
         <h1>Scanner le code barre</h1>
         <section>
-            <div id="scanner-container" style="width:100%; max-width:400px; margin:auto;"></div>
-            <div id="scanner-laser"></div>
-            <p id="resultat-scan" style="text-align:center;"></p>
-            <div id="produit-info" style="text-align: center; margin-top: 20px;"></div>
+            <!-- Appareil photo -->
         </section>
         <?php
         if (!isset($error)) {
@@ -76,68 +72,5 @@
     <?php
     require_once __DIR__.'/../views/nav_bar.php';
     ?>
-    <script>
-document.addEventListener('DOMContentLoaded', () => {
-    Quagga.init({
-        inputStream: {
-            name: "Live",
-            type: "LiveStream",
-            target: document.querySelector('#scanner-container'),
-            constraints: {
-                facingMode: "environment" // arrière du téléphone
-            }
-        },
-        decoder: {
-            readers: ["ean_reader", "upc_reader"]
-        },
-        locate: true
-    }, function (err) {
-        if (err) {
-            console.error("Erreur Quagga : ", err);
-            return;
-        }
-        Quagga.start();
-    });
-
-    let scanned = false;
-
-    Quagga.onDetected((data) => {
-        if (scanned) return; // éviter les doublons
-        scanned = true;
-
-        const code = data.codeResult.code;
-        document.getElementById("resultat-scan").textContent = "Code détecté : " + code;
-
-        // 🔎 Requête à l'API OpenFoodFacts
-        fetch(`https://world.openfoodfacts.org/api/v0/product/${code}.json`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 1) {
-                    const product = data.product;
-                    document.getElementById("produit-info").innerHTML = `
-                        <h2>${product.product_name || "Nom inconnu"}</h2>
-                        <p><strong>Marque :</strong> ${product.brands || "Inconnue"}</p>
-                        <p><strong>Catégorie :</strong> ${product.categories || "Non précisée"}</p>
-                        <p><strong>Calories /100g :</strong> ${product.nutriments["energy-kcal_100g"] || "N/A"}</p>
-                        ${product.image_url ? `<img src="${product.image_url}" alt="Image du produit" style="max-width: 150px;">` : ""}
-                    `;
-                } else {
-                    document.getElementById("produit-info").innerHTML = `
-                        <p style="color:red;">Produit non trouvé.</p>
-                    `;
-                }
-
-                Quagga.stop(); // Stopper le scanner
-            })
-            .catch(err => {
-                console.error("Erreur lors de la récupération du produit :", err);
-                document.getElementById("produit-info").innerHTML = `
-                    <p style="color:red;">Erreur lors de la récupération des données.</p>
-                `;
-                Quagga.stop();
-            });
-    });
-});
-</script>
 </body>
 </html>
