@@ -1,0 +1,70 @@
+h1 {
+    margin-top: 0;
+    padding-top: 0.67em;
+    text-align: center;
+}
+#password_reinitialisation{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+input[type="email"], input[type="password"]{
+    background-color: #ff914d;
+    color: white;
+    text-shadow: 1px 0 0 black, 0 1px 0 black, 0 -1px 0 black, -1px 0 0 black;
+    border: none;
+    border-radius: 5em;
+    width: 60%;
+    height: 2em;
+    margin: 0.5em;
+    padding: 0 0.5em 0 0.5em;
+}
+input[type="submit"]{
+    background-color: #ff914d;
+    color: white;
+    text-shadow: 1px 0 0 black, 0 1px 0 black, 0 -1px 0 black, -1px 0 0 black;
+    font-weight: bold;
+    border: none;
+    border-radius: 5em;
+    height: 3em;
+    margin: 1em;
+    padding: 0 1em 0 1em;
+    cursor: pointer;
+}
+input[type="submit"]:hover{
+    background-color: #ff6f00;
+}
+.recette_container{
+    margin: 0 2em 0 2em;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+.recette{
+    background-color: #d9d9d9;
+    border-radius: 1em;
+    margin: 0.5em 0 0.5em 0;
+    padding: 0.5em;
+    display: grid;
+    grid-template: 80% 1fr / 85% 1fr;
+    height: 10em;
+}
+.recette_container h2{
+    margin: 0;
+}
+.recette_container h3{
+    margin: 0;
+    grid-column: span 2;
+    text-wrap: wrap;
+}
+.star_icon{
+    width: 2em;
+}
+.image_recette{
+    height: 100%;
+    width: auto;
+    border-radius: 1em
+}

@@ -1,0 +1,14 @@
+body{
+    background-color: #EFEDDC;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; 
+}
+.inscription{
+    text-align: center;
+}
+form {
+    
+    padding: 20px;
+
+    
+}
