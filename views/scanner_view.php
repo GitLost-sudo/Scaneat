@@ -28,33 +28,40 @@
         }
         else if ($error == false) {
             ?>
-            <form action="" method="post">
+            <form action="../controllers/ajout_produit_frigo_controller.php" method="post">
                 <h2><?= $product['name'] ?></h2>
-                <label for="categorie"><span>Categorie : </span></label>
-                <select name="categorie" id="categorie">
-                    <option value="" >Sélectionner une catégorie</option>
-                    <?php
-                    foreach ($categories as $category) {
-                        ?>
-                        <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                <div>
+                    <label for="categorie"><span>Categorie : </span></label>
+                    <select name="categorie" id="categorie">
+                        <option value="" >Sélectionner une catégorie</option>
                         <?php
-                    }
-                    ?>
-                </select>
+                        foreach ($categories as $category) {
+                            ?>
+                            <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
+                            <?php
+                        }
+                        ?>
+                    </select>
+                </div>
                 <p><span>Calories /100g :</span> <?= $product['calories'] ?></p>
-                <label for="quantite"><span>Quantité :</span></label>
-                <select name="quantite" id="quantite">
-                    <option value="">Selectionner une quantité</option>
-                    <?php
-                    for ($i = 0; $i < 10; $i++) {
-                        ?>
-                        <option value="<?= $i ?>"><?= $i ?></option>
+                <div>
+                    <label for="quantite"><span>Quantité :</span></label>
+                    <select name="quantite" id="quantite">
+                        <option value="">Selectionner une quantité</option>
                         <?php
-                    }
-                    ?>
-                </select>
-                <label for="date_expiration"><span>Date d'expiration :</span></label>
-                <input type="date" name="date_expiration" id="date_expiration" required>
+                        for ($i = 0; $i < 10; $i++) {
+                            ?>
+                            <option value="<?= $i ?>"><?= $i ?></option>
+                            <?php
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div>
+                    <label for="date_expiration"><span>Date d'expiration :</span></label>
+                    <input type="date" name="date_expiration" id="date_expiration" required>
+                </div>
+                <input type="submit" value="Ajouter">
             </form>
             <?php
         }

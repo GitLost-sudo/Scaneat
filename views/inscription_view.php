@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="./../public/styles/inscription.css">
 </head>
 <body> 
-<?php include('header.php'); ?>
+<?php
+require_once __DIR__.'/../views/header_org.php';
+?>
+<main>
 <div class="inscription">
     Inscription
 </div>
@@ -30,5 +33,8 @@
     </div>
   </form>
 </main>
+<?php
+require_once __DIR__.'/../views/nav_bar.php';
+?>
 </body>
 </html>
