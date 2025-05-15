@@ -2,7 +2,7 @@
 <style>
     header {
         background-color: #ff914d;
-        position: relative;
+        position: sticky;
         display: flex;
         justify-content: space-between;
         align-items: center;
