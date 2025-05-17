@@ -17,11 +17,11 @@
             </div>
 
             <div class="Choix">
-                <a href="connexion.php">
+                <a href="../views/connexion.php">
                     <h1>CONNEXION</h1>
                 </a>
                 </form>
-                <a href="inscription_view.php">
+                <a href="../views/inscription.php">
                     <h1>INSCRIPTION</h1>
                 </a>
             </div>
