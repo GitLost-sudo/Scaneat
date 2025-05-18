@@ -22,6 +22,7 @@
         </header>
         <div class="TitreRecuperationMDP"> Email du compte que vous voulez récupérer :</div>
         <form action="../controllers/recuperation_controller.php" method="POST">
+
             <div class="BlocFormulaire">
                 <div class="champ">
                     <input type="text" name="email">

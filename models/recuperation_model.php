@@ -14,7 +14,7 @@ if (isset($_POST['valider'])) {
         if ($data) {// data esrt le résultat de la requete
             $id = $data['compte_id'];// on précise [compte_id] lala pour éviter d'avoir toutes les colonnes du tableau
             // Générer un lien 
-            $lien = "réinitialisation.php?id=" . urlencode($id);
+            $lien = "http://localhost/scaneat/controllers/réinitialisation_controller.php?id=" . urlencode($id);
 
             $message = "Envoyé, <a href='$lien' style='color:green;'>cliquez ici pour réinitialiser votre mot de passe</a>";
             $type_message = "success";
