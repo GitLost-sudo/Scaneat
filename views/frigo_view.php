@@ -9,19 +9,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
 </head>
 <body>
-    <?php
-    require_once __DIR__.'/../views/header_org.php';
-    ?>
-    <div id="addProductModal" class="modal">
+<?php if (isset($success)): ?>
+    <div style="background-color: #d4edda; color: #155724; padding: 10px; border: 1px solid #c3e6cb; border-radius: 5px; margin-bottom: 15px;">
+        <?= htmlspecialchars($success) ?>
+    </div>
+<?php endif; ?>
+
+<?php if (isset($error)): ?>
+    <div style="background-color: #f8d7da; color: #721c24; padding: 10px; border: 1px solid #f5c6cb; border-radius: 5px; margin-bottom: 15px;">
+        ⚠️ <?= htmlspecialchars($error) ?>
+    </div>
+<?php endif; ?>
+<?php require_once __DIR__.'/../views/header_org.php'; ?>
+
+<div id="addProductModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
     <h2>Ajouter un produit</h2>
     <form action="../controllers/ajouter_produit_controller.php" method="POST" enctype="multipart/form-data">
-        <label for="nom"> <span>Nom du produit :</span></label>
+        <label for="nom"><span>Nom du produit :</span></label>
         <input type="text" name="nom" required><br>
 
-        <label for="catégorie">Catégorie :</label>
-        <select name="catégorie" id="catégorie" required>
+        <label for="categorie">Catégorie :</label>
+        <select name="categorie" id="categorie" required>
           <option value="">--Choisissez une catégorie--</option>
           <option value="légume">Légume</option>
           <option value="fruit">Fruit</option>
@@ -29,49 +39,60 @@
           <option value="produit_laitiers">Produit laitier</option>
           <option value="boissons">Boisson</option>
           <option value="autre">Autre</option>
-
         </select><br>
-        <label for="quantité">Quantité :</label>
-        <input type="number" name="quantité" required><br>
+
+        <label for="quantite">Quantité :</label>
+        <input type="number" name="quantite" required><br>
+
         <label for="date_peremption">Date de péremption :</label>
         <input type="date" name="date_peremption" required><br>
         <p id="date-error" style="color: yellow; font-weight: bold;"></p>
 
         <input type="submit" value="Ajouter" style="background-color: #498A0C">
-
     </form>
   </div>
 </div>
+
 <?php 
-// tableau des icones celon la catégorie des produits
+// tableau des icônes selon la catégorie
 $icones = [
-    'fruits' => '../public/icons/fruits_icone.png',
-    'légumes' => '../public/icons/legumes_icone.png',
-    'viandes' => '../public/icons/viandes_icone.png',
-    'produits laitiers' => '../public/icons/produits_laitiers_icone.png',
+    'fruit' => '../public/icons/fruits_icone.png',
+    'légume' => '../public/icons/legumes_icone.png',
+    'viande' => '../public/icons/viandes_icone.png',
+    'produit_laitiers' => '../public/icons/produits_laitiers_icone.png',
     'boissons' => '../public/icons/boisson_icone.png',
-    'autres' => '../public/icons/autre_icone.png'
+    'autre' => '../public/icons/autre_icone.png'
 ];
 ?>
-    <main>
-        <h1>Mon Frigo</h1>
 
-  <div class="container">
-    <?php foreach ($produits as $produit): ?>
-        <div class="item">
-            <a href="#"><img class="item_img" src="../public/img/<?= $produit['image'] ?>" alt="image du produit"></a>
-            <a href="../controllers/supprimer_produit_controller.php?frigo_id=<?= $produit['frigo_id'] ?>">                <img class="icon_remove" src="../public/icons/remove.png" alt="icone de suppression">
-            </a>
-            <p class="item_name">Nom du produit : <?= $produit['nom'] ?></p>
-            <p class="item_date">Date d'expiration : <?= $produit['date_peremption'] ?></p>
-        </div>
-    <?php endforeach; ?>
-</div>
-<a href="#" class="add_product" id="openModalBtn">Ajouter un<br>produit</a>    </main>
-    <?php
-    require_once __DIR__.'/../views/nav_bar.php';
-    ?>
-  <script>
+<main>
+    <h1>Mon Frigo</h1>
+
+    <div class="container">
+        <?php foreach ($produits as $produit): ?>
+            <div class="item">
+                <a href="#"><img class="item_img" src="../public/img/<?= $produit['image'] ?>" alt="image du produit"></a>
+
+                <a href="../controllers/supprimer_produit_controller.php?produit_id=<?= $produit['produit_id'] ?>">
+                    <img class="icon_remove" src="../public/icons/remove.png" alt="icone de suppression">
+                </a>
+
+                <?php if (!empty($produit['categorie']) && isset($icones[$produit['categorie']])): ?>
+                    <img class="icon_categorie" src="<?= $icones[$produit['categorie']] ?>" alt="catégorie">
+                <?php endif; ?>
+
+                <p class="item_name">Nom du produit : <?= htmlspecialchars($produit['nom']) ?></p>
+                <p class="item_date">Date d'expiration : <?= htmlspecialchars($produit['date_peremption']) ?></p>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
+    <a href="#" class="add_product" id="openModalBtn">Ajouter un<br>produit</a>
+</main>
+
+<?php require_once __DIR__.'/../views/nav_bar.php'; ?>
+
+<script>
 document.getElementById("openModalBtn").addEventListener("click", function(event) {
   event.preventDefault();
   document.getElementById("addProductModal").style.display = "block";
@@ -110,7 +131,7 @@ dateInput.addEventListener('input', () => {
 
 form.addEventListener('submit', function(e) {
     if (!isDateValid()) {
-        e.preventDefault(); // bloque l'envoi du formulaire
+        e.preventDefault();
         errorMsg.textContent = "⛔ Veuillez choisir une date de péremption valide (aujourd'hui ou plus tard).";
     }
 });
