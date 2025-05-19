@@ -39,6 +39,9 @@
                     style="text-align: center; color: <?= $type_message === 'success' ? 'green' : 'red' ?>; margin-top: 15px;">
                     <?= $message ?>
                 </div>
+            <?php if($type_message='succes'){
+                header('Location: ../controllers/mon_profil_controller.php');
+            }   ?>
             <?php endif; ?>
 
         </form>
