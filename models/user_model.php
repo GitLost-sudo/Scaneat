@@ -17,7 +17,7 @@ function createUser($username, $email, $password)
         ":email" => $email,
         ":password" => password_hash($password, PASSWORD_BCRYPT)
     ));
-    return "Inscription réussie !";
+    return true;
 }
 /*
 function loginUser($email, $password) {
