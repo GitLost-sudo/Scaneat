@@ -4,13 +4,12 @@ $error = null;
 if($_SERVER['REQUEST_METHOD']=='GET')
 {
     //Guard
-    if(
-        !isset($_GET['produit_id'])
-        || !is_numeric($_GET['produit_id'])
-    )
-    {
+    if (!isset($_GET['frigo_id']) || !is_numeric($_GET['frigo_id'])) {
         throw new Exception("Paramètres invalides");
     }
-    supprimer_produit_frigo($_GET['$produit_id']);
-    header('Location: /controllers/frigo_controller.php');
+    
+    $frigo_id = $_GET['frigo_id'];
+    supprimer_produit_frigo($frigo_id);
+    header('Location: ../views/frigo_view.php');
 }
+require_once __DIR__.'/../views/frigo_view.php';
