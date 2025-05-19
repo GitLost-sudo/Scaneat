@@ -46,34 +46,25 @@
         <?= $halal ? '<h3>Recettes halal</h3>' : '' ?>
         <div class="recette_container">
             <?php
-            /*foreach ($recettes as $recette) {
-                if (
-                    (isset($vegetarien) && $vegetarien && !$recette['vegetarien']) ||
-                    (isset($vegan) && $vegan && !$recette['vegan']) ||
-                    (isset($sans_gluten) && $sans_gluten && !$recette['sans_gluten']) ||
-                    (isset($sans_lactose) && $sans_lactose && !$recette['sans_lactose']) ||
-                    (isset($halal) && $halal && !$recette['halal'])
-                ) {
-                    continue;
-                }*/
+            foreach ($recettes as $recette) {
                 ?>
                 <div class="recette">
-                    <a href="#"><img class="image_recette" src="../public/img/<?= $recette['image'] ?>" alt="image de la recette"></a>
+                    <a href="#"><img class="image_recette" src="<?= $recette['strMealThumb'] ?>" alt="image de la recette"></a>
                     <?php
                     /*if ($recette['is_favorite']) {
                         ?>
                         <a href="#"><img class="star_icon" src="../public/icons/star_full.png" alt="icon deja favori"></a>
                         <?php
-                    } else { */
+                    } else {*/
                         ?>
                         <a href="#"><img class="star_icon" src="../public/icons/star_empty.png" alt="icon pas encore favori"></a>
                         <?php
                     //}
                     ?>
-                    <h3>Nom de la recette<!--<?= $recette['name'] ?>--></h3>
+                    <h3><?= $recette['strMeal'] ?></h3>
                 </div>
                 <?php
-            //}
+            }
             ?>
         </div>
     </main>
