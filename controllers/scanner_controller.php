@@ -13,5 +13,8 @@ $product = [
     ],
 ];
 
+$categorie = $_POST['categorie'] ?? '';
+
+
 // view
 require_once __DIR__.'/../views/scanner_view.php';

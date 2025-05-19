@@ -28,41 +28,45 @@
         }
         else if ($error == false) {
             ?>
-            <form action="../controllers/ajout_produit_frigo_controller.php" method="post">
-                <h2><?= $product['name'] ?></h2>
-                <div>
-                    <label for="categorie"><span>Categorie : </span></label>
-                    <select name="categorie" id="categorie">
-                        <option value="" >Sélectionner une catégorie</option>
-                        <?php
-                        foreach ($categories as $category) {
-                            ?>
-                            <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
-                            <?php
-                        }
-                        ?>
-                    </select>
-                </div>
-                <p><span>Calories /100g :</span> <?= $product['calories'] ?></p>
-                <div>
-                    <label for="quantite"><span>Quantité :</span></label>
-                    <select name="quantite" id="quantite">
-                        <option value="">Selectionner une quantité</option>
-                        <?php
-                        for ($i = 0; $i < 10; $i++) {
-                            ?>
-                            <option value="<?= $i ?>"><?= $i ?></option>
-                            <?php
-                        }
-                        ?>
-                    </select>
-                </div>
-                <div>
-                    <label for="date_expiration"><span>Date d'expiration :</span></label>
-                    <input type="date" name="date_expiration" id="date_expiration" required>
-                </div>
-                <input type="submit" value="Ajouter">
-            </form>
+                <form action="../controllers/ajout_produit_frigo_controller.php" method="post">
+    <h2 id="nom-produit"><?= $product['name'] ?? '' ?></h2>
+    <input type="hidden" name="nom" id="nom" value="<?= $product['name'] ?? '' ?>">
+
+    <div>
+    <label for="categorie"><span>Catégorie :</span></label>
+    <?php foreach ($categories as $category): ?>
+    <select name="categorie" id="categorie">
+        
+    <option value="">Sélectionner une catégorie</option>
+        <option value="<?= htmlspecialchars($category['id']) ?>">
+            <?= htmlspecialchars($category['name']) ?>
+        </option>
+    <?php endforeach; ?>
+</select>
+    <p><small>Catégorie détectée : <span id="cat-suggestion">Aucune</span></small></p>
+</div>
+
+    <p><span>Calories /100g :</span> <span id="calories"><?= $product['calories'] ?? '' ?></span></p>
+    <input type="hidden" name="calories" id="calories-input" value="<?= $product['calories'] ?? '' ?>">
+
+    <div>
+        <label for="quantite"><span>Quantité :</span></label>
+        <select name="quantite" id="quantite">
+            <option value="">Sélectionner une quantité</option>
+            <?php for ($i = 1; $i <= 10; $i++): ?>
+                <option value="<?= $i ?>"><?= $i ?></option>
+            <?php endfor; ?>
+        </select>
+    </div>
+
+    <div>
+        <label for="date_expiration"><span>Date d'expiration :</span></label>
+        <input type="date" name="date_expiration" id="date_expiration" required>
+    </div>
+
+    <input type="submit" value="Ajouter">
+</form>
+
             <?php
         }
         else if ($error == 'not-found') {
@@ -118,15 +122,62 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch(`https://world.openfoodfacts.org/api/v0/product/${code}.json`)
             .then(response => response.json())
             .then(data => {
-                if (data.status === 1) {
-                    const product = data.product;
-                    document.getElementById("produit-info").innerHTML = `
-                        <h2>${product.product_name || "Nom inconnu"}</h2>
-                        <p><strong>Marque :</strong> ${product.brands || "Inconnue"}</p>
-                        <p><strong>Catégorie :</strong> ${product.categories || "Non précisée"}</p>
-                        <p><strong>Calories /100g :</strong> ${product.nutriments["energy-kcal_100g"] || "N/A"}</p>
-                        ${product.image_url ? `<img src="${product.image_url}" alt="Image du produit" style="max-width: 150px;">` : ""}
-                    `;
+    if (data.status === 1) {
+        const product = data.product;
+
+        // === NOM ===
+        const nom = product.product_name || "Nom inconnu";
+        document.getElementById("nom-produit").textContent = nom;
+        document.getElementById("nom").value = nom;
+
+        // === CALORIES ===
+        const calories = product.nutriments["energy-kcal_100g"] || "";
+        document.getElementById("calories").textContent = calories;
+        document.getElementById("calories-input").value = calories;
+
+        // === CATÉGORIES ===
+        const catText = product.categories || "Aucune";
+        const categoriesArray = catText.split(", ").filter(cat => cat.trim() !== "");
+
+        document.getElementById("cat-suggestion").textContent = categoriesArray[0] || "Aucune";
+
+        const select = document.getElementById("categorie");
+        select.innerHTML = '<option value="">Sélectionner une catégorie</option>';
+
+        categoriesArray.forEach(cat => {
+            const option = document.createElement("option");
+            option.value = cat;
+            option.textContent = cat;
+            select.appendChild(option);
+        });
+
+        // Facultatif : pré-sélectionner la première
+        if (categoriesArray.length > 0) {
+            select.value = categoriesArray[0];
+        }
+
+        Quagga.stop();
+    } else {
+        document.getElementById("produit-info").innerHTML = `
+            <p style="color:red;">Produit non trouvé.</p>
+        `;
+        Quagga.stop();
+    }
+})
+
+
+    const nom = product.product_name || "Nom inconnu";
+    const calories = product.nutriments["energy-kcal_100g"] || "";
+
+    document.getElementById("nom-produit").textContent = nom;
+    document.getElementById("nom").value = nom;
+
+    document.getElementById("calories").textContent = calories;
+    document.getElementById("calories-input").value = calories;
+
+    // Si tu veux pré-sélectionner une catégorie (si tu arrives à deviner à partir de `product.categories`)
+    // tu peux le faire ici avec un `document.getElementById("categorie").value = "id_catégorie"`
+
                 } else {
                     document.getElementById("produit-info").innerHTML = `
                         <p style="color:red;">Produit non trouvé.</p>
