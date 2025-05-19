@@ -15,7 +15,7 @@
                 <img src="../img/ecriture.png">
             </div>
             <div class="home-icon">
-                <a href="authentification.php">
+                <a href="../controllers/authentification_controller.php">
                     <img src="../img/home.png">
                 </a>
             </div>
@@ -33,7 +33,7 @@
             <?php if (!empty($message)): ?>
                 <div
                     style="text-align: center; color: <?= $type_message === 'success' ? 'green' : 'red' ?>; margin-top: 15px;">
-                    <?= $message ?>
+                    <?= "Le lien à été envoyé avec succès" ?>
                 </div>
             <?php endif; ?>
 

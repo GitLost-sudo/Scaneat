@@ -15,7 +15,7 @@
                 <img src="../img/ecriture.png">
             </div>
             <div class="home-icon">
-                <a href="authentification.php">
+                <a href="../controllers/authentification_controller.php">
                     <img src="../img/home.png">
                 </a>
             </div>

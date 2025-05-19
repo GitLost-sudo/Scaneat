@@ -1,14 +1,14 @@
 <?php
 
 //models
-require_once __DIR__.'/../models/recuperation_model.php';
+require_once __DIR__ . '/../models/recuperation_model.php';
 //mail 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require_once __DIR__.'/../PHPMailer-master/PHPMailer-master/src/Exception.php';
-require_once __DIR__.'/../PHPMailer-master/PHPMailer-master/src/PHPMailer.php';
-require_once __DIR__.'/../PHPMailer-master/PHPMailer-master/src/SMTP.php';
+require_once __DIR__ . '/../PHPMailer-master/PHPMailer-master/src/Exception.php';
+require_once __DIR__ . '/../PHPMailer-master/PHPMailer-master/src/PHPMailer.php';
+require_once __DIR__ . '/../PHPMailer-master/PHPMailer-master/src/SMTP.php';
 
 $message = "";
 $type_message = "";
@@ -26,8 +26,8 @@ if (isset($_POST['valider']) && !empty($_POST['email'])) {
         $lien = "http://localhost/scaneat/controllers/réinitialisation_controller.php?id=" . urlencode($id);
 
         // Construction du message HTML
-        $message = "Bonjour,<br>Voici le lien pour réinitialiser votre mot de passe : 
-                    <a href='$lien'>Cliquez ici</a>";
+        $message = "Voici le lien pour réinitialiser votre mot de passe : <a href='$lien' style='color:green;'>cliquez ici pour réinitialiser votre mot de passe</a>";
+
         $type_message = "success";
 
         // Envoi de l'email
@@ -63,4 +63,4 @@ if (isset($_POST['valider']) && !empty($_POST['email'])) {
 }
 
 // Views 
-require_once __DIR__.'/../views/recuperation.php';
+require_once __DIR__ . '/../views/recuperation.php';
