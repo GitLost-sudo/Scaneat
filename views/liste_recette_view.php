@@ -39,6 +39,11 @@
                 <input type="submit" value="Appliquer les filtres">
             </form>
         </section>
+        <?= $vegetarien ? '<h3>Recettes végétariennes</h3>' : '' ?>
+        <?= $vegan ? '<h3>Recettes véganes</h3>' : '' ?>
+        <?= $sans_gluten ? '<h3>Recettes sans gluten</h3>' : '' ?>
+        <?= $sans_lactose ? '<h3>Recettes sans lactose</h3>' : '' ?>
+        <?= $halal ? '<h3>Recettes halal</h3>' : '' ?>
         <div class="recette_container">
             <?php
             /*foreach ($recettes as $recette) {
