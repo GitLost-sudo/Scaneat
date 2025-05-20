@@ -5,7 +5,7 @@ main {
     overflow-y: scroll;
 }
 .recette_container{
-    margin: 0 2em 0 2em;
+    margin: 0 4em 0 4em;
     padding: 1em;
     display: flex;
     flex-direction: column;
