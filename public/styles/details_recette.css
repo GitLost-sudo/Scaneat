@@ -1,0 +1,51 @@
+.recette_details {
+    background-color: #b0312b;
+    color: white;
+    border-radius: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0.5em;
+    padding: 2em;
+}
+.recette_header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.recette_image {
+    width: 90%;
+    border-radius: 2em;
+}
+.favori {
+    width: 3em;
+}
+input[type="submit"] {
+    background-color: #ff914d;
+    color: white;
+    border: none;
+    border-radius: 2em;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    margin: 1em;
+}
+select {
+    background-color: #ff914d;
+    color: white;
+    border: none;
+    border-radius: 2em;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    margin: 1em;
+}
+.fleche_retour {
+    width: 3em;
+}
+h3 {
+    margin: 0.5em;
+    padding: 1em;
+    border-radius: 0.5em;
+    background-color: greenyellow;
+    color: black;
+}

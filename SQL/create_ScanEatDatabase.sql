@@ -20,5 +20,3 @@ CREATE TABLE IF NOT EXISTS `frigo`(
 FOREIGN KEY (`compte_id`) REFERENCES `compte`(`compte_id`)
 );
 
-
-DROP DATABASE ScanEat;
