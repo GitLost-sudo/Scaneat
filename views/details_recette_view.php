@@ -12,6 +12,13 @@
     require_once __DIR__.'/../views/header_org.php';
     ?>
     <main>
+        <?php
+        if ($recette['realisee']) {
+            ?>
+            <h3>Tous les ingrédients de cette recette ont été retirer de votre frigo</h3>
+            <?php
+        }
+        ?>
         <form class="recette_details" action="../controllers/realisation_recette_controller.php" method="post">
             <div class="recette_header">
                 <a href="../controllers/liste_recette_controller.php">
@@ -19,7 +26,7 @@
                 </a>
                 <h1><?= $recette['strMeal'] ?></h1>
                 <?php
-                //if ($recette['isfavorite']) {
+                //if ($recette['is_favorite']) {
                     ?>
                     <a href="../controllers/ajouter_favoris_controller.php?id=<?= $recette['idMeal'] ?>">
                         <img class="favori" src="../public/icons/star_empty.png" alt="Ajouter aux favoris">

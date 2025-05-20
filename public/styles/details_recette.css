@@ -42,3 +42,10 @@ select {
 .fleche_retour {
     width: 3em;
 }
+h3 {
+    margin: 0.5em;
+    padding: 1em;
+    border-radius: 0.5em;
+    background-color: greenyellow;
+    color: black;
+}

@@ -71,11 +71,11 @@
                     <?php
                     /*if ($recette['is_favorite']) {
                         ?>
-                        <a href="#"><img class="star_icon" src="../public/icons/star_full.png" alt="icon deja favori"></a>
+                        <a href="../controllers/retirer_favoris_controller.php?id=<?= $recette['idMeal'] ?>"><img class="star_icon" src="../public/icons/star_full.png" alt="icon deja favori"></a>
                         <?php
                     } else {*/
                         ?>
-                        <a href="#"><img class="star_icon" src="../public/icons/star_empty.png" alt="icon pas encore favori"></a>
+                        <a href="../controllers/ajouter_favoris_controller.php?id=<?= $recette['idMeal'] ?>"><img class="star_icon" src="../public/icons/star_empty.png" alt="icon pas encore favori"></a>
                         <?php
                     //}
                     ?>
