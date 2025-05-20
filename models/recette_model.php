@@ -6,17 +6,14 @@ require_once __DIR__.'/../models/db_connect.php';
 // Create
 
 // Read
-function read_recette_by_id($id) {
-    $url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" . urlencode($id);
+function get_recette_by_id($id) {
+    $url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=$id";
     $response = file_get_contents($url);
     if ($response === false) {
         return null;
     }
     $data = json_decode($response, true);
-    if (isset($data['meals']) && $data['meals'] !== null) {
-        return $data['meals'][0];
-    }
-    return null;
+    return $data['meals'][0] ?? null;
 }
 
 function list_recette_by_filters($vegetarien, $vegan, $sans_gluten, $sans_lactose, $halal) {
