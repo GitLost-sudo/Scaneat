@@ -38,67 +38,53 @@ function list_recette_by_filters($vegetarien, $vegan, $sans_gluten, $sans_lactos
                 $ingredients[] = strtolower(trim($ing));
             }
         }
-        $category = strtolower($meal['strCategory']);
+
+        // Liste des mots-clés à exclure pour chaque filtre
+        $meats = ['beef', 'chicken', 'pork', 'lamb', 'goat', 'fish', 'herring'];
+        $vegan_exclude = ['egg', 'milk', 'cheese', 'butter', 'honey'];
+        $gluten_exclude = ['bread', 'flour', 'pasta', 'noodles'];
+        $lactose_exclude = ['milk', 'cheese', 'butter', 'cream'];
+        $halal_exclude = ['pork', 'bacon', 'ham', 'wine', 'beer', 'rum'];
+
+        // Fonction utilitaire pour vérifier si un ingrédient contient un mot-clé interdit
+        $contains_forbidden = function($ingredients, $keywords) {
+            foreach ($ingredients as $ing) {
+                foreach ($keywords as $kw) {
+                    if (strpos($ing, $kw) !== false) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        };
 
         // Filtres végétarien/vegan (exclure viande/poisson)
         if ($vegetarien || $vegan) {
-            if (
-                in_array($category, ['beef', 'chicken', 'seafood', 'pork', 'lamb', 'goat', 'fish']) ||
-                in_array('beef', $ingredients) ||
-                in_array('chicken', $ingredients) ||
-                in_array('pork', $ingredients) ||
-                in_array('lamb', $ingredients) ||
-                in_array('goat', $ingredients) ||
-                in_array('fish', $ingredients) ||
-                in_array('herring', $ingredients) // exemple pour la recette fournie
-            ) {
+            if ($contains_forbidden($ingredients, $meats)) {
                 continue;
             }
         }
         // Vegan : exclure oeufs, lait, fromage, beurre, miel
         if ($vegan) {
-            if (
-                in_array('egg', $ingredients) ||
-                in_array('milk', $ingredients) ||
-                in_array('cheese', $ingredients) ||
-                in_array('butter', $ingredients) ||
-                in_array('honey', $ingredients)
-            ) {
+            if ($contains_forbidden($ingredients, $vegan_exclude)) {
                 continue;
             }
         }
         // Sans gluten : exclure pain, farine, pâtes, etc.
         if ($sans_gluten) {
-            if (
-                in_array('bread', $ingredients) ||
-                in_array('flour', $ingredients) ||
-                in_array('pasta', $ingredients) ||
-                in_array('noodles', $ingredients)
-            ) {
+            if ($contains_forbidden($ingredients, $gluten_exclude)) {
                 continue;
             }
         }
         // Sans lactose : exclure lait, fromage, beurre, crème
         if ($sans_lactose) {
-            if (
-                in_array('milk', $ingredients) ||
-                in_array('cheese', $ingredients) ||
-                in_array('butter', $ingredients) ||
-                in_array('cream', $ingredients)
-            ) {
+            if ($contains_forbidden($ingredients, $lactose_exclude)) {
                 continue;
             }
         }
         // Halal : exclure porc, alcool
         if ($halal) {
-            if (
-                in_array('pork', $ingredients) ||
-                in_array('bacon', $ingredients) ||
-                in_array('ham', $ingredients) ||
-                in_array('wine', $ingredients) ||
-                in_array('beer', $ingredients) ||
-                in_array('rum', $ingredients)
-            ) {
+            if ($contains_forbidden($ingredients, $halal_exclude)) {
                 continue;
             }
         }
