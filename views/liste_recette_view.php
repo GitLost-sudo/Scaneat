@@ -65,7 +65,7 @@
             foreach ($recettes as $recette) {
                 ?>
                 <div class="recette">
-                    <a href="#"><img class="image_recette" src="<?= $recette['strMealThumb'] ?>" alt="image de la recette"></a>
+                    <a href="../controllers/details_recette_controller.php?id=<?= $recette['idMeal'] ?>"><img class="image_recette" src="<?= $recette['strMealThumb'] ?>" alt="image de la recette"></a>
                     <?php
                     /*if ($recette['is_favorite']) {
                         ?>
