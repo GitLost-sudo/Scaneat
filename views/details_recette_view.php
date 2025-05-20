@@ -12,7 +12,7 @@
     require_once __DIR__.'/../views/header_org.php';
     ?>
     <main>
-        <form class="recette_details" action="../controllers/details_recette_controller.php" method="post">
+        <form class="recette_details" action="../controllers/realisation_recette_controller.php" method="post">
             <div class="recette_header">
                 <a href="../controllers/liste_recette_controller.php">
                     <img class="fleche_retour" src="../public/icons/fleche_retour.png" alt="flèche de retour">
@@ -63,7 +63,8 @@
                     <option value="4">4 personnes</option>
                     <option value="5">5 personnes</option>
                 </select>
-            <input type="submit" value="Terminé">
+            <input type="hidden" name="id" value="<?= $recette['idMeal'] ?>">
+            <input type="submit" value="J'ai terminé la recette">
         </form>
     </main>
     <?php
