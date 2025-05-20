@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS `compte`(
 );
 CREATE TABLE `frigo` (
  `frigo_id`INT PRIMARY KEY auto_increment,
- `compte_id`INT,
+ `compte_id`INT NOT NULL,
  `nom` TEXT NOT NULL,
  `categorie`VARCHAR(255),
  `quantite`INT,

@@ -68,24 +68,33 @@ $icones = [
 <main>
     <h1>Mon Frigo</h1>
 
-    <div class="container">
-        <?php foreach ($produits as $produit): ?>
-            <div class="item">
-                <a href="#"><img class="item_img" src="../public/img/<?= $produit['image'] ?>" alt="image du produit"></a>
+    <?php if (!isset($produits) || empty($produits)): ?>
+        <p style="color: orange;">Aucun produit à afficher.</p>
+    <?php else: ?>
+        <div class="container">
+            <?php foreach ($produits as $produit): ?>
+                <div class="item">
+                    <!-- Image principale selon la catégorie -->
+                    <?php if (!empty($produit['categorie']) && isset($icones[$produit['categorie']])): ?>
+                        <img class="item_img" src="<?= $icones[$produit['categorie']] ?>" alt="catégorie">
+                    <?php else: ?>
+                        <img class="item_img" src="../public/icons/autre_icone.png" alt="produit">
+                    <?php endif; ?>
 
-                <a href="../controllers/supprimer_produit_controller.php?produit_id=<?= $produit['produit_id'] ?>">
-                    <img class="icon_remove" src="../public/icons/remove.png" alt="icone de suppression">
-                </a>
+                    <a href="../controllers/supprimer_produit_controller.php?produit_id=<?= $produit['frigo_id'] ?>">
+                        <img class="icon_remove" src="../public/icons/remove.png" alt="icone de suppression">
+                    </a>
 
-                <?php if (!empty($produit['categorie']) && isset($icones[$produit['categorie']])): ?>
-                    <img class="icon_categorie" src="<?= $icones[$produit['categorie']] ?>" alt="catégorie">
-                <?php endif; ?>
+                    <?php if (!empty($produit['categorie']) && isset($icones[$produit['categorie']])): ?>
+                        <img class="icon_categorie" src="<?= $icones[$produit['categorie']] ?>" alt="catégorie">
+                    <?php endif; ?>
 
-                <p class="item_name">Nom du produit : <?= htmlspecialchars($produit['nom']) ?></p>
-                <p class="item_date">Date d'expiration : <?= htmlspecialchars($produit['date_peremption']) ?></p>
-            </div>
-        <?php endforeach; ?>
-    </div>
+                    <p class="item_name">Nom du produit : <?= htmlspecialchars($produit['nom']) ?></p>
+                    <p class="item_date">Date d'expiration : <?= htmlspecialchars($produit['date_peremption']) ?></p>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
 
     <a href="#" class="add_product" id="openModalBtn">Ajouter un<br>produit</a>
 </main>
@@ -138,3 +147,4 @@ form.addEventListener('submit', function(e) {
 </script>
 </body>
 </html>
+  

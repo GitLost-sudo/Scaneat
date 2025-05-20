@@ -9,10 +9,11 @@ h1{
     font-size: 3vh;
     font-family: 'Archivo Black', sans-serif;
     margin-top: 7vh;
-    -webkit-text-stroke: 0.02em black;
+    -webkit-text-stroke: 0.04em black;
 }
 h1 span{
     color: #FF0000;
+    -webkit-text-stroke: 0.01em black;
 }
 .notifications-container {
     display: flex; /* MET ICI le flex EN LIGNE */
