@@ -7,6 +7,8 @@ CREATE TABLE IF NOT EXISTS `compte`(
     `email` VARCHAR(255) NOT NULL UNIQUE,
     `password` VARCHAR(255) NOT NULL
 );
+SELECT*FROM COMPTE;
+
 CREATE TABLE IF NOT EXISTS `frigo`(
  
 `frigo_id`INT PRIMARY KEY auto_increment,

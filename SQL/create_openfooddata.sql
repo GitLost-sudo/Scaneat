@@ -8,3 +8,6 @@ CREATE TABLE `produit` (
   `nutriscore` char(2) DEFAULT NULL,
   `image_url` text DEFAULT NULL
 ) 
+
+
+ 
