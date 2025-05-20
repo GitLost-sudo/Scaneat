@@ -16,20 +16,20 @@ Commanditaire : Quentin VABUTSELE
 
 Le modèle MVC (Model-View-Controller) sépare les responsabilités de votre application en trois parties distinctes :
 
-- Model : Gère les données et la logique métier (même en PHP procédural, on peut structurer ses fonctions pour isoler la gestion des données).
+- `Model` : Gère les données et la logique métier (même en PHP procédural, on peut structurer ses fonctions pour isoler la gestion des données).
 Le Model gère les données et la logique métier de l'application. En PHP procédural, il s'agit de fonctions et de scripts dédiés à la récupération, au traitement et à la sauvegarde des informations.
 Centralisation des règles métier
 Séparation claire des données et de la présentation
 Facilite la maintenance et l'évolution du code 
 
-- View : S'occupe de l'affichage et de la présentation des données à l'utilisateur.
+- `View` : S'occupe de l'affichage et de la présentation des données à l'utilisateur.
 Les Views sont responsables de l'affichage des données à l'utilisateur. Elles contiennent le code HTML et peuvent intégrer des variables issues du Model, sans inclure de logique métier complexe.
 Séparation nette entre logique et présentation
 Facilite le travail des designers
 Permet une mise à jour visuelle sans impacter la logique métier
 
 
-- Controller : Traite les requêtes de l'utilisateur, interagit avec le model et choisit la vue à afficher.
+- `Controller` : Traite les requêtes de l'utilisateur, interagit avec le model et choisit la vue à afficher.
 Le Controller fait le lien entre les requêtes de l'utilisateur, le Model et la View. Il traite les entrées, exécute la logique de l'application et choisit la bonne vue à afficher.
 
 Centralisation du routage et de la logique d'acheminement
@@ -45,7 +45,6 @@ Typiquement, chaque controller est une route sur lequel les URL pointent. Et cor
 ``` mermaid
 flowchart
 le_produit --> un_produit
-marque --> un_produit
 catégorie --> le_produit
 frigo --> un_produit
 frigo --> compte
@@ -62,7 +61,6 @@ favoris --> recette
 erDiagram
 
 le_produit ||--|{ un_produit : possede
-marque ||--|{ un_produit : possede
 categorie ||--|{ le_produit : possede
 frigo ||--|{ un_produit : possede
 frigo ||--|{ compte : possede
@@ -108,9 +106,6 @@ favoris {
     int compte
     int recette
 }
-marque {
-    string name
-}
 ```
 
 ### MPD
@@ -120,7 +115,6 @@ marque {
 erDiagram
 
 le_produit ||--|{ un_produit : le_produit_id
-marque ||--|{ un_produit : marque_id
 categorie }|--|{ le_produit_categorie : categorie_id
 le_produit_categorie }|--|{ le_produit : le_produit_id
 frigo ||--o{ un_produit_frigo : frigo_id
@@ -191,9 +185,5 @@ compte_frigo {
 favoris {
     int compte_id
     int recette_id
-}
-marque {
-    int marque_id
-    string name
 }
 ```

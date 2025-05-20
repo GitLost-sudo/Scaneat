@@ -15,7 +15,7 @@ require_once __DIR__.'/../views/header_org.php';
 <div class="inscription">
     Inscription
 </div>
-  <form action="controllers/inscription_controller.php" method="POST" class="form-example">
+  <form action="inscription_controller.php" method="POST" class="form-example">
   <div class="form-example">
       <label for="username">Nom: </label>
       <input type="text" name="username" id="username" required />

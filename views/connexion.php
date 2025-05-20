@@ -1,34 +1,3 @@
-<?php
-$connexion = new PDO('mysql:host=localhost;dbname=ScanEat', 'root', '');
-
-$message = "";
-$type_message = ""; // "success" ou "error"
-
-if (isset($_POST['valider'])) {
-
-    if (!empty($_POST['email']) and !empty($_POST['password'])) {
-        $email = htmlspecialchars($_POST['email']);
-        $password = $_POST['password'];
-
-        $req = $connexion->prepare("SELECT* FROM compte WHERE email=?");
-        $req->execute(array($email));
-        $user = $req->fetch();
-
-        if ($user && password_verify($password, $user['password'])) {
-            $message = "Le compte a bien été trouvé";
-            $type_message = "success";
-        } else {
-            $message = "Le compte est introuvable";
-            $type_message = "error";
-        }
-    } else {
-        $message = "Remplissez tout les champs";
-        $type_message = "error";
-    }
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,13 +15,13 @@ if (isset($_POST['valider'])) {
                 <img src="../img/ecriture.png">
             </div>
             <div class="home-icon">
-                <a href="authentification.php">
+                <a href="../controllers/authentification_controller.php">
                     <img src="../img/home.png">
                 </a>
             </div>
         </header>
         <div class="titreInscription"> CONNEXION</div>
-        <form action="" method="POST">
+        <form action="../controllers/connexion_controller.php" method="POST">
 
 
             <div class="champ"> Email : <br>
@@ -62,7 +31,7 @@ if (isset($_POST['valider'])) {
                 <input type="password" name="password">
             </div>
             <div class="oublie">
-                <a href="recuperation.php">Mot de passe oublié ?</a>
+                <a href="../controllers/recuperation_controller.php">Mot de passe oublié ?</a>
             </div>
             <input type="submit" value="Se connecter" name="valider" class="ButtonCreation">
             <?php if (!empty($message)): ?>
@@ -70,6 +39,9 @@ if (isset($_POST['valider'])) {
                     style="text-align: center; color: <?= $type_message === 'success' ? 'green' : 'red' ?>; margin-top: 15px;">
                     <?= $message ?>
                 </div>
+            <?php if($type_message='succes'){
+                header('Location: ../controllers/mon_profil_controller.php');
+            }   ?>
             <?php endif; ?>
 
         </form>

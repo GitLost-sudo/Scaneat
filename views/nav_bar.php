@@ -3,6 +3,7 @@
 <style>
 nav {
     background-color: #ff914d;
+    position: sticky;
     bottom: 0;
     left: 0;
     right: 0;
@@ -60,7 +61,7 @@ nav p {
         <p>Frigo</p>
     </div>
     <div class="navbar_recette">
-        <a href="#"><img src="../public/icons/recettes_icones.png" alt="recettes"></a>
+        <a href="../controllers/liste_recette_controller.php"><img src="../public/icons/recettes_icones.png" alt="recettes"></a>
         <p>Recettes</p>
     </div>
 </nav>
