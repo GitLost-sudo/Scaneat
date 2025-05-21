@@ -7,6 +7,9 @@ main {
     flex-direction: column;
     align-items: stretch;
     font-family: 'archivo black', sans-serif;
+    background-image: url("../img/background_test1.jpg");
+    background-size: cover;
+    background-position: center;
 }
 h1{
     background-color: #9b9b9b;

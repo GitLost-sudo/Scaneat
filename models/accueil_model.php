@@ -4,8 +4,8 @@ require_once __DIR__."/openfooddata_connect.php";
 function urgent() {
     global $db;
     $sql ="SELECT 
-    frigo.produit_id,
 
+    frigo.nom,
     frigo.date_peremption
 FROM 
     frigo 

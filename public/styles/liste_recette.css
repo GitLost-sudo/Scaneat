@@ -3,6 +3,9 @@ main {
     flex-direction: column;
     align-items: stretch;
     overflow-y: scroll;
+    background-image: url("../img/background_test1.jpg");
+    background-size: cover;
+    background-position: center;
 }
 .recette_container{
     margin: 0 4em 0 4em;
