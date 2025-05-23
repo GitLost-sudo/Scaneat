@@ -12,3 +12,14 @@ form {
 
     
 }
+
+footer img {
+    width: 20%
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5%;
+}

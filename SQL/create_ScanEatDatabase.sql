@@ -16,4 +16,3 @@ CREATE TABLE `frigo` (
  `date_peremption`DATE,
  FOREIGN KEY (`compte_id`) REFERENCES `compte`(`compte_id`)
 );
-
