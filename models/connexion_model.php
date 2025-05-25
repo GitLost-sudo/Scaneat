@@ -4,6 +4,12 @@ $connexion = new PDO('mysql:host=localhost;dbname=ScanEat', 'root', '');
 $message = "";
 $type_message = ""; // "success" ou "error"
 
+session_start();
+$id_session = session_id();
+$_SESSION["email"];
+$_SESSION["password"];
+
+if($id_session){
 if (isset($_POST['valider'])) {
 
     if (!empty($_POST['email']) and !empty($_POST['password'])) { //si les champs e mail et mdp sont pas vide
@@ -23,7 +29,7 @@ if (isset($_POST['valider'])) {
     <script>
         document.getElementById("redirectForm").submit();
     </script>';
-   
+
             exit();
         } else {
             $message = "Le compte est introuvable";
@@ -33,5 +39,7 @@ if (isset($_POST['valider'])) {
         $message = "Remplissez tout les champs";
         $type_message = "error";
     }
+}
+echo "compte trouvé";
 }
 ?>

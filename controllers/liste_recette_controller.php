@@ -1,4 +1,7 @@
 <?php
+$email_utilisateur_connecté = $_POST['email'] ?? '';
+$password = $_POST['password'] ?? '';
+var_dump($email);
 
 // models
 require_once __DIR__.'/../models/recette_model.php';
