@@ -4,13 +4,12 @@ require_once __DIR__."/openfooddata_connect.php";
 function urgent() {
     global $db;
     $sql ="SELECT 
-    frigo.produit_id,
-    openfooddata.nom,
+
+    frigo.nom,
     frigo.date_peremption
 FROM 
     frigo 
-JOIN 
-    openfooddata  ON frigo.produit_id = openfooddata.produit_id
+
 WHERE 
     DATEDIFF(frigo.date_peremption, CURDATE()) <= 4
     AND DATEDIFF(frigo.date_peremption, CURDATE()) >= 0

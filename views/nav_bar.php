@@ -3,7 +3,7 @@
 <style>
 nav {
     background-color: #ff914d;
-    position:fixed;
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
@@ -13,8 +13,9 @@ nav {
     height: 10vh;
     border-radius: 0.5em 0.5em 0 0;
     font-family: 'Archivo Black', sans-serif;
-    -webkit-text-stroke: 0.04em black;
+    
     z-index: 1000;
+    
 }
 
 nav .navbar_scanner,
@@ -61,7 +62,7 @@ nav p {
         <p>Frigo</p>
     </div>
     <div class="navbar_recette">
-        <a href="#"><img src="../public/icons/recettes_icones.png" alt="recettes"></a>
+        <a href="../controllers/liste_recette_controller.php"><img src="../public/icons/recettes_icones.png" alt="recettes"></a>
         <p>Recettes</p>
     </div>
 </nav>

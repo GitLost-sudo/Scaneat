@@ -8,15 +8,14 @@ CREATE TABLE IF NOT EXISTS `compte`(
     `email` VARCHAR(255) NOT NULL UNIQUE,
     `password` VARCHAR(255) NOT NULL
 );
-
-
-
+SELECT * FROM compte;
 CREATE TABLE `frigo` (
- `frigo_id`INT AUTO_INCREMENT PRIMARY KEY,
- `produit_nom`VARCHAR(255),
- `catégorie`VARCHAR(255),
+ `frigo_id`INT PRIMARY KEY auto_increment,
+ `compte_id`INT NOT NULL,
+ `nom` TEXT NOT NULL,
+ `categorie`VARCHAR(255),
  `quantite`INT,
  `date_peremption`DATE,
  FOREIGN KEY (`compte_id`) REFERENCES `compte`(`compte_id`)
- 
 );
+
