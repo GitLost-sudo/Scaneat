@@ -1,15 +1,11 @@
 <?php
+
+
 $connexion = new PDO('mysql:host=localhost;dbname=ScanEat', 'root', '');
 
 $message = "";
 $type_message = ""; // "success" ou "error"
 
-session_start();
-$id_session = session_id();
-$_SESSION["email"];
-$_SESSION["password"];
-
-if($id_session){
 if (isset($_POST['valider'])) {
 
     if (!empty($_POST['email']) and !empty($_POST['password'])) { //si les champs e mail et mdp sont pas vide
@@ -21,8 +17,13 @@ if (isset($_POST['valider'])) {
         $user = $req->fetch();// on associe un user à une requete
 
         if ($user && password_verify($password, $user['password'])) { // si ces correct on va mettre un petit formulaire la CACHE
+          
+            $_SESSION['compte_id'] = $user['compte_id'];
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['email'] = $user['email'];
+            
             echo '
-    <form id="redirectForm" action="../controllers/mon_profil_controller.php" method="POST">
+    <form id="redirectForm" action="../controllers/accueil_controller.php" method="POST">
         <input type="hidden" name="email" value="' . htmlspecialchars($email) . '">
         <input type="hidden" name="password" value="' . htmlspecialchars($password) . '">
     </form>
@@ -40,6 +41,8 @@ if (isset($_POST['valider'])) {
         $type_message = "error";
     }
 }
+
 echo "compte trouvé";
-}
+
+
 ?>

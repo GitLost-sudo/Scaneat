@@ -12,7 +12,7 @@
 <body>
 <?php include '../views/header_org.php'; ?>
 <div class ="T1">
-<h1>Bonjour, <span> <?php $username ?></span>!</h1>
+<h1>Bonjour, <span> <?php echo $username ?></span>!</h1>
 </div>
  <?php 
 // tableau des icones celon la catégorie des produits

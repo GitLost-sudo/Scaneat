@@ -1,11 +1,9 @@
 <?php
-$email_utilisateur_connecté = $_POST['email'] ?? '';
-$password = $_POST['password'] ?? '';
-var_dump($_POST);
-
-//On démarre une nouvelle session
 session_start();
-$id_session = session_id();
+// Tu récupères les données de session
+$compte_id = $_SESSION['compte_id'];
+$username = $_SESSION['username'];
+$email = $_SESSION['email'];
 
 
 // model
