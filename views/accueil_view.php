@@ -65,17 +65,15 @@ $alertes = [
         $icone = $icones[$categorie] ?? $icones['autres']; 
     ?>
         <div class="notification">
-            <p> 
+           
                 <img src="<?=$icone?>" alt="<?= $categorie?>"> 
-                <?=($alerte['nom'])?> expire le: <?= ($alerte['date_peremption']) ?> 
+             <p>   <?=($alerte['nom'])?> expire le: <?= ($alerte['date_peremption']) ?> </p>
                 <img src="../public/icons/urgent_icone.png" alt="urgent!">
-            </p>
+           
         </div>
     <?php endforeach; ?>
 </div> 
-    <div class ="recette">
-    <p>Quelques recettes de <strong>saison</strong>:</p>
-    </div>
+ 
     <?php include '../views/nav_bar.php'; ?>
 </body>
 </html>
