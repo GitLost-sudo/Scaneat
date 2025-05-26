@@ -17,11 +17,10 @@ try {
         // Appel à la fonction d'ajout
         ajouter_produit_manuel(
             $_POST['nom'],
-            $_POST['quantite'] ?? null,
-            $_POST['date_peremption'] ?? null,
+            $_POST['date_peremption'] ?? null, 
+            $_POST['quantite'] ?? null,        
             $_POST['categorie'] ?? null
         );
-        // Message de succès
         $success = "Produit ajouté avec succès !";
         // Redirection après ajout
 
