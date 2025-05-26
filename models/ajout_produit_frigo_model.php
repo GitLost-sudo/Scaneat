@@ -16,7 +16,7 @@ function ajouter_produit_manuel($nom, $date_peremption, $quantite, $categorie) {
         ':quantite' => $quantite,
         ':categorie' => $categorie,
     ]);
-    echo "compte_id: " . $_SESSION['compte_id'];
+    
 
 }
 

@@ -12,7 +12,7 @@
 <body>
     <?php
     require_once __DIR__ . '/header_org.php';
-   
+
     ?>
     <main>
         <h1>Profil</h1>
@@ -28,6 +28,11 @@
 
             <input type="submit" value="Changer de mot de passe">
         </form>
+        
+        <form action="deconnexion_controller.php" method="POST">
+            <input type="submit" value="Déconnexion">
+        </form>
+
         <div class="recette_container">
             <h2>Mes recettes favorites</h2>
             <?php
