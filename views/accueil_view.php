@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scan'Eat Acceuil</title>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="..\public\styles\accueil.css">
+    <link rel="stylesheet" href="../public/styles/common.css">
 </head>
-
-<link rel="stylesheet" href="..\public\styles\accueil.css">
 <body>
 <?php include '../views/header_org.php'; ?>
+<main>
 <div class ="T1">
 <h1>Bonjour, <span> <?php echo $username ?></span>!</h1>
 </div>
@@ -73,7 +73,7 @@ $alertes = [
         </div>
     <?php endforeach; ?>
 </div> 
- 
+</main>
     <?php include '../views/nav_bar.php'; ?>
 </body>
 </html>

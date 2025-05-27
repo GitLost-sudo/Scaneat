@@ -28,7 +28,7 @@
         }
         else if ($error == false) { // false
             ?>
-            <form action="../controllers/ajout_produit_frigo_controller.php" method="post">
+            <form class="form_ajout" action="../controllers/ajout_produit_frigo_controller.php" method="post">
                 <h2><?= $product['name'] ?></h2>
                 <div>
                     <label for="categorie"><span>Categorie : </span></label>
