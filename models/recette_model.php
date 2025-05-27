@@ -90,6 +90,16 @@ function list_recette_by_filters($vegetarien, $vegan, $sans_gluten, $sans_lactos
     return $filtered;
 }
 
+function search_recette($searched_text) {
+    $url = "https://www.themealdb.com/api/json/v1/1/search.php?s=" . urlencode($searched_text);
+    $response = file_get_contents($url);
+    if ($response === false) {
+        return [];
+    }
+    $data = json_decode($response, true);
+    return $data['meals'] ?? [];
+}
+
 // Update
 
 // Delete
