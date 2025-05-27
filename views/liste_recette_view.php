@@ -11,11 +11,15 @@
     <?php
     require_once __DIR__.'/../views/header_org.php';
     ?>
+    <form class="search_bar displaynone" action="../controllers/search_controller.php" method="post">
+        <input type="text" name="search" placeholder="Rechercher une recette" required>
+        <button type="submit">Rechercher</button>
+    </form>
     <main>
         <button class="filtres_button">Filtres</button>
         <section class="section_filtres displaynone">
             <h2>Filtres</h2>
-            <form action="../controllers/apply_filters_controller.php" method="post">
+            <form class="filters_form" action="../controllers/apply_filters_controller.php" method="post">
                 <div class="checkbox_container">
                     <input type="checkbox" id="vegetarien" name="vegetarien" <?= $vegetarien ? 'checked' : '' ?>>
                     <label for="vegetarien">Végétarien</label>
@@ -88,6 +92,7 @@
             ?>
         </div>
     </main>
+    <img class="search_button" src="../public/img/loupe.png" alt="icon de recherche">
     <?php
     require_once __DIR__.'/../views/nav_bar.php';
     ?>
