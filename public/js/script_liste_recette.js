@@ -10,3 +10,20 @@ buttonFiltres.addEventListener('click', () => {
         sectionFiltres.classList.add('displaynone');
     }
 });
+
+// Quand on clique sur l'image avec la classe "search_button", on affecte la classe "displaysection" à la place de "displaynone" au form avec la classe "search_bar"
+const buttonSearch = document.querySelector('.search_button');
+const formSearch = document.querySelector('.search_bar');
+const mainSection = document.querySelector('main');
+
+buttonSearch.addEventListener('click', () => {
+    if (formSearch.classList.contains('displaynone')) {
+        formSearch.classList.remove('displaynone');
+        formSearch.classList.add('displaysection');
+        mainSection.classList.add('display_grise');
+    } else {
+        formSearch.classList.remove('displaysection');
+        formSearch.classList.add('displaynone');
+        mainSection.classList.remove('display_grise');
+    }
+});
