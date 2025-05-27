@@ -11,7 +11,6 @@
 
 <body>
     <?php
-   
     require_once __DIR__ . '/../views/header_org.php';
     ?>
     <form class="search_bar displaynone" action="../controllers/search_controller.php" method="post">
@@ -22,9 +21,9 @@
         <button class="filtres_button">Filtres</button>
         <section class="section_filtres displaynone">
             <h2>Filtres</h2>
-            <form action="../controllers/apply_filters_controller.php" method="post">
-                <input type="hidden" name="email" value="<?php $email_utilisateur_connecté ?>">;
-                <input type="hidden" name="password" value="<?php $password ?>">;
+            <form class="filters_form" action="../controllers/apply_filters_controller.php" method="post">
+                <input type="hidden" name="email" value="<?php $email_utilisateur_connecté ?>">
+                <input type="hidden" name="password" value="<?php $password ?>">
                 <div class="checkbox_container">
                     <input type="checkbox" id="vegetarien" name="vegetarien" <?= $vegetarien ? 'checked' : '' ?>>
                     <label for="vegetarien">Végétarien</label>
