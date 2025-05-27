@@ -32,6 +32,7 @@
 
     /* Responsive mobile */
     @media (max-width: 600px) {
+
         .iconemaison img,
         .iconemenu img {
             height: 2.6em;
@@ -44,6 +45,10 @@
 </style>
 
 <header>
+    <?php
+    $email_utilisateur_connecté = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+    ?>
     <div class="iconemaison">
         <a href="../controllers/accueil_controller.php"><img src="../public/icons/accueil.png" alt="Maison"></a>
     </div>
@@ -51,6 +56,10 @@
         <img src="../public/img/SCAN'EAT_Ecriture.png" alt="Scan Eat">
     </div>
     <div class="iconemenu">
-        <a href="../controllers/mon_profil_controller.php"><img src="../public/icons/utilisateur.png" alt="Menu"></a>
+        <form id="profilForm" action="../controllers/mon_profil_controller.php" method="POST">
+            <input type="hidden" name="email" value="<?= $email_utilisateur_connecté ?>">
+            <input type="hidden" name="password" value="<?= $password ?>">
+            <img src="../public/icons/utilisateur.png" alt="Menu" style="cursor:pointer;" onclick="document.getElementById('profilForm').submit();">
+        </form>
     </div>
 </header>

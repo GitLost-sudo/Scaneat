@@ -1,4 +1,10 @@
 <?php
+session_start();
+echo "compte_id: " . $_SESSION['compte_id'];
+// Tu récupères les données de session
+$compte_id = $_SESSION['compte_id'];
+$username = $_SESSION['username'];
+$email = $_SESSION['email'];
 
 // models
 require_once __DIR__.'/../models/recette_model.php';

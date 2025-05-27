@@ -44,7 +44,7 @@
         <label for="quantite">Quantité :</label>
         <input type="number" name="quantite" required><br>
 
-        <label for="date_peremption">Date de péremption :</label>
+        <label for="date_peremption">Date de péremption : </label>
         <input type="date" name="date_peremption" required><br>
         <p id="date-error" style="color: yellow; font-weight: bold;"></p>
 
