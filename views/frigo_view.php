@@ -89,8 +89,8 @@ $icones = [
                         <img class="icon_categorie" src="<?= $icones[$produit['categorie']] ?>" alt="catégorie">
                     <?php endif; */?>
 
-                    <p class="item_name">Nom du produit : <?= htmlspecialchars($produit['nom']) ?></p>
-                    <p class="item_date">Date d'expiration : <?= htmlspecialchars($produit['date_peremption']) ?></p>
+                    <p class="item_name"><?= htmlspecialchars($produit['nom']) ?></p>
+                    <p class="item_date"><?= htmlspecialchars($produit['date_peremption']) ?></p>
                 </div>
             <?php endforeach; ?>
         </div>
