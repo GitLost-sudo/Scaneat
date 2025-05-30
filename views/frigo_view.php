@@ -17,7 +17,7 @@
 
 <?php if (isset($error)): ?>
     <div style="background-color: #f8d7da; color: #721c24; padding: 10px; border: 1px solid #f5c6cb; border-radius: 5px; margin-bottom: 15px;">
-        ⚠️ <?= htmlspecialchars($error) ?>
+         <?= htmlspecialchars($error) ?>
     </div>
 <?php endif; ?>
 <?php require_once __DIR__.'/../views/header_org.php'; ?>
@@ -66,7 +66,7 @@ $icones = [
 ?>
 
 <main>
-    <h1>Mon Frigo</h1>
+    <h1>🧊Mon Frigo🧊</h1>
 
     <?php if (!isset($produits) || empty($produits)): ?>
         <p style="color: orange;">Aucun produit à afficher.</p>
@@ -132,7 +132,7 @@ function isDateValid() {
 
 dateInput.addEventListener('input', () => {
     if (!isDateValid()) {
-        errorMsg.textContent = "⚠️ Ce produit est déjà périmé !";
+        errorMsg.textContent = "Ce produit est déjà périmé !";
     } else {
         errorMsg.textContent = "";
     }

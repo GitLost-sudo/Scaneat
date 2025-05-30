@@ -12,17 +12,19 @@ h1{
     -webkit-text-stroke: 0.04em black;
 }
 h1 span{
-    color: #FF0000;
+    color: green;
     -webkit-text-stroke: 0.01em black;
 }
 .notifications-container {
-    display: flex; 
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: navajowhite;
     flex-direction: column;
     overflow-y: auto;
    max-height: 20vh;
     gap: 1vw;
     padding: 1vh;
-    
+   
 }
 
 .notification {

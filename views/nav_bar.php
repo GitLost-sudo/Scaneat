@@ -2,8 +2,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
 <style>
 nav {
-    background-color: #ff914d;
-    position: sticky;
+background-color: #ff914d;
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
