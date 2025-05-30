@@ -9,6 +9,7 @@ $email = $_SESSION['email'];
 echo "compte_id: " . $_SESSION['compte_id'];
 // Inclusion du modèle
 require_once __DIR__ . '/../models/ajout_produit_frigo_model.php';
+require_once __DIR__ . '/../models/frigo_model.php';
 
 // Gestion d'erreur
 $error = null;
@@ -36,6 +37,8 @@ try {
     // En cas d'erreur, stocke le message pour affichage
     $error = $e->getMessage();
 }
+
+$produits = frigo($compte_id);
 
 // Affichage de la vue avec ou sans erreur
 require_once __DIR__ . '/../views/frigo_view.php';
