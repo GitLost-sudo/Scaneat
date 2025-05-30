@@ -85,9 +85,9 @@ $icones = [
                         <img class="icon_remove" src="../public/icons/remove.png" alt="icone de suppression">
                     </a>
 
-                    <?php if (!empty($produit['categorie']) && isset($icones[$produit['categorie']])): ?>
+                    <?php /* if (!empty($produit['categorie']) && isset($icones[$produit['categorie']])): ?>
                         <img class="icon_categorie" src="<?= $icones[$produit['categorie']] ?>" alt="catégorie">
-                    <?php endif; ?>
+                    <?php endif; */?>
 
                     <p class="item_name">Nom du produit : <?= htmlspecialchars($produit['nom']) ?></p>
                     <p class="item_date">Date d'expiration : <?= htmlspecialchars($produit['date_peremption']) ?></p>
