@@ -8,4 +8,4 @@ pages:
     paths:
       - public
   only:
-  - 11-suppresion-des-elements-de-notre-frigo
+    - 11-suppresion-des-elements-de-notre-frigo
