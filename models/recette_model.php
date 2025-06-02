@@ -6,6 +6,16 @@ require_once __DIR__.'/../models/db_connect.php';
 // Create
 
 // Read
+function list_recette() {
+    $url = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
+    $response = file_get_contents($url);
+    if ($response === false) {
+        return [];
+    }
+    $data = json_decode($response, true);
+    return $data['meals'];
+}
+
 function list_recette_by_frigo($compte_id) {
     global $db;
     $sql = "SELECT * FROM frigo WHERE compte_id = :compte_id;";
