@@ -9,16 +9,6 @@ CREATE TABLE `compte`(
     `password` VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE `frigo` (
- `frigo_id`INT PRIMARY KEY auto_increment,
- `compte_id`INT NOT NULL,
- `nom` VARCHAR(255) NOT NULL,
- `categorie`VARCHAR(255),
- `quantite`INT,
- `date_peremption`DATE,
- FOREIGN KEY (`compte_id`) REFERENCES `compte`(`compte_id`)
-);
-
 DROP TABLE IF EXISTS `frigo`;
 CREATE TABLE `frigo` (
   `frigo_id`INT AUTO_INCREMENT,
