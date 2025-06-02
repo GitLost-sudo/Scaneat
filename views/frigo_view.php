@@ -17,7 +17,7 @@
 
 <?php if (isset($error)): ?>
     <div style="background-color: #f8d7da; color: #721c24; padding: 10px; border: 1px solid #f5c6cb; border-radius: 5px; margin-bottom: 15px;">
-        ⚠️ <?= htmlspecialchars($error) ?>
+         <?= htmlspecialchars($error) ?>
     </div>
 <?php endif; ?>
 <?php require_once __DIR__.'/../views/header_org.php'; ?>
@@ -66,7 +66,7 @@ $icones = [
 ?>
 
 <main>
-    <h1>Mon Frigo</h1>
+    <h1>🧊Mon Frigo🧊</h1>
 
     <?php if (!isset($produits) || empty($produits)): ?>
         <p style="color: orange;">Aucun produit à afficher.</p>
@@ -85,12 +85,13 @@ $icones = [
                         <img class="icon_remove" src="../public/icons/remove.png" alt="icone de suppression">
                     </a>
 
-                    <?php if (!empty($produit['categorie']) && isset($icones[$produit['categorie']])): ?>
+                    <?php /* if (!empty($produit['categorie']) && isset($icones[$produit['categorie']])): ?>
                         <img class="icon_categorie" src="<?= $icones[$produit['categorie']] ?>" alt="catégorie">
-                    <?php endif; ?>
+                    <?php endif; */?>
 
-                    <p class="item_name">Nom du produit : <?= htmlspecialchars($produit['nom']) ?></p>
-                    <p class="item_date">Date d'expiration : <?= htmlspecialchars($produit['date_peremption']) ?></p>
+                    <p class="item_name"><?= htmlspecialchars($produit['nom']) ?></p>
+                    <p class="item_quantity">Quantité : <?= htmlspecialchars($produit['quantite']) ?></p>
+                    <p class="item_date"><?= htmlspecialchars($produit['date_peremption']) ?></p>
                 </div>
             <?php endforeach; ?>
         </div>
@@ -132,7 +133,7 @@ function isDateValid() {
 
 dateInput.addEventListener('input', () => {
     if (!isDateValid()) {
-        errorMsg.textContent = "⚠️ Ce produit est déjà périmé !";
+        errorMsg.textContent = "Ce produit est déjà périmé !";
     } else {
         errorMsg.textContent = "";
     }

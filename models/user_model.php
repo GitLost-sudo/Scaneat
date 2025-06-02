@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__."/db_connect.php";
+require_once __DIR__."/../models/db_connect.php";
 #model lié a la gestion des données des utilisateurs
 
 //Create
