@@ -32,10 +32,14 @@
         <form action="deconnexion_controller.php" method="POST">
             <input type="submit" value="Déconnexion">
         </form>
-
+        <h2>Mes recettes favorites</h2>
         <div class="recette_container">
-            <h2>Mes recettes favorites</h2>
             <?php
+            if (empty($recettes)) {
+                ?>
+                <p>Aucune recette favorite trouvée.</p>
+                <?php
+            }
             foreach ($recettes as $recette) {
             ?>
             <div class="recette">

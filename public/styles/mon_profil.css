@@ -4,6 +4,9 @@ h1 {
     padding-top: 0.67em;
     text-align: center;
 }
+h2 {
+    text-align: center;
+}
 #password_reinitialisation{
     display: flex;
     flex-direction: column;
@@ -76,4 +79,7 @@ input[type="submit"]:hover{
     align-items: center;
     color: black;
     text-decoration: none;
+}
+main p {
+    margin: 0;
 }
