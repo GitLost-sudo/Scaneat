@@ -12,11 +12,11 @@ function list_recette_by_frigo($compte_id) {
     $stmt = $db->prepare($sql);
     $stmt->execute([ ':compte_id' => $compte_id]);
     $frigo_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+
     $filtered_recipes = [];
-    
+
     foreach ($frigo_items as $item) {
-        $nom = strtolower(trim($item['nom']));
+        $nom = strtolower($item['nom']);
         $url = "https://www.themealdb.com/api/json/v1/1/search.php?s=$nom";
         $response = file_get_contents($url);
         $data = json_decode($response, true);
@@ -33,9 +33,12 @@ function list_recette_by_frigo($compte_id) {
                 }
             }
 
-            // Si l'ingrédient du frigo est présent dans la recette, on ajoute la recette
-            if (in_array($nom, $ingredients)) {
-                $filtered_recipes[] = $meal;
+            // Vérifie si l'ingrédient du frigo est contenu dans un ingrédient de la recette
+            foreach ($ingredients as $ingredient) {
+                if (strpos($ingredient, $nom) !== false) {
+                    $filtered_recipes[] = $meal;
+                    break; // On ajoute la recette une seule fois
+                }
             }
         }
     }
