@@ -42,7 +42,6 @@ if (isset($_POST['valider'])) {
     }
 }
 
-echo "compte trouvé";
 
 
 ?>
