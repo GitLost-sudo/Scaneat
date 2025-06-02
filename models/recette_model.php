@@ -82,9 +82,9 @@ function get_recette_by_id($id, $compte_id) {
     if ($response === false) {
         return null;
     }
-    $recettes_frigo = list_recette_by_frigo($response, $compte_id);
+    $data = json_decode($response, true);
     // On retourne la première recette trouvée dans le frigo, sinon null
-    return $recettes_frigo[0] ?? null;
+    return $data['meals'][0] ?? null;
 }
 
 function list_recette_by_filters($vegetarien, $vegan, $sans_gluten, $sans_lactose, $halal, $compte_id) {

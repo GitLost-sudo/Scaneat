@@ -10,7 +10,7 @@ function get_favoris_by_compte_id($compte_id) {
     
     $recettes = [];
     foreach ($favoris as $favori) {
-        $recette = get_recette_by_id($favori['recette_id']);
+        $recette = get_recette_by_id($favori['recette_id'], $compte_id);
         if ($recette) {
             $recettes[] = $recette;
         }
