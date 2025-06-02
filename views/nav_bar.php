@@ -13,8 +13,9 @@ nav {
     height: 10vh;
     border-radius: 0.5em 0.5em 0 0;
     font-family: 'Archivo Black', sans-serif;
-    -webkit-text-stroke: 0.04em black;
+    
     z-index: 1000;
+    
 }
 
 nav .navbar_scanner,

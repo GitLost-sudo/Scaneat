@@ -8,7 +8,7 @@ span {
     color: #7ed957;
     text-shadow: 0.5px 0 0 rgb(50, 50, 50), 0 0.5px 0 rgb(50, 50, 50), 0 -0.5px 0 rgb(50, 50, 50), -0.5px 0 0 rgb(50, 50, 50);
 }
-form {
+.form_ajout {
     height: 40vh;
     background-color: white;
     align-items: center;
@@ -73,7 +73,7 @@ section {
     height: auto !important;
     object-fit: cover;
     border-radius: 10px;
-    transform: scaleX(-1);
+
 }
 
 

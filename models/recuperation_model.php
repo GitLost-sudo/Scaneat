@@ -1,5 +1,5 @@
 <?php
-$connexion = new PDO('mysql:host=localhost;dbname=ScanEat', 'root', '');
+require_once __DIR__ . "/../models/db_connect.php";
 
 $message = "";
 $type_message = "";
@@ -7,7 +7,7 @@ $type_message = "";
 if (isset($_POST['valider'])) {
     if (!empty($_POST['email'])) {
         $email = htmlspecialchars($_POST['email']);//sert à protéger les données avant de les afficher dans une page HTML.
-        $req = $connexion->prepare("SELECT compte_id FROM compte WHERE email = ?");
+        $req = $db->prepare("SELECT compte_id FROM compte WHERE email = ?");
         $req->execute([$email]);
         $data = $req->fetch(); // ca sera un compte_id
 

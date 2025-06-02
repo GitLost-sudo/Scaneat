@@ -17,7 +17,7 @@
 
 <?php if (isset($error)): ?>
     <div style="background-color: #f8d7da; color: #721c24; padding: 10px; border: 1px solid #f5c6cb; border-radius: 5px; margin-bottom: 15px;">
-        ⚠️ <?= htmlspecialchars($error) ?>
+         <?= htmlspecialchars($error) ?>
     </div>
 <?php endif; ?>
 <?php require_once __DIR__.'/../views/header_org.php'; ?>
@@ -44,7 +44,7 @@
         <label for="quantite">Quantité :</label>
         <input type="number" name="quantite" required><br>
 
-        <label for="date_peremption">Date de péremption :</label>
+        <label for="date_peremption">Date de péremption : </label>
         <input type="date" name="date_peremption" required><br>
         <p id="date-error" style="color: yellow; font-weight: bold;"></p>
 
@@ -66,26 +66,36 @@ $icones = [
 ?>
 
 <main>
-    <h1>Mon Frigo</h1>
+    <h1>🧊Mon Frigo🧊</h1>
 
-    <div class="container">
-        <?php foreach ($produits as $produit): ?>
-            <div class="item">
-                <a href="#"><img class="item_img" src="../public/img/<?= $produit['image'] ?>" alt="image du produit"></a>
+    <?php if (!isset($produits) || empty($produits)): ?>
+        <p style="color: orange;">Aucun produit à afficher.</p>
+    <?php else: ?>
+        <div class="container">
+            <?php foreach ($produits as $produit): ?>
+                <div class="item">
+                    <!-- Image principale selon la catégorie -->
+                    <?php if (!empty($produit['categorie']) && isset($icones[$produit['categorie']])): ?>
+                        <img class="item_img" src="<?= $icones[$produit['categorie']] ?>" alt="catégorie">
+                    <?php else: ?>
+                        <img class="item_img" src="../public/icons/autre_icone.png" alt="produit">
+                    <?php endif; ?>
 
-                <a href="../controllers/supprimer_produit_controller.php?produit_id=<?= $produit['produit_id'] ?>">
-                    <img class="icon_remove" src="../public/icons/remove.png" alt="icone de suppression">
-                </a>
+                    <a href="../controllers/supprimer_produit_controller.php?produit_id=<?= $produit['frigo_id'] ?>">
+                        <img class="icon_remove" src="../public/icons/remove.png" alt="icone de suppression">
+                    </a>
 
-                <?php if (!empty($produit['categorie']) && isset($icones[$produit['categorie']])): ?>
-                    <img class="icon_categorie" src="<?= $icones[$produit['categorie']] ?>" alt="catégorie">
-                <?php endif; ?>
+                    <?php /* if (!empty($produit['categorie']) && isset($icones[$produit['categorie']])): ?>
+                        <img class="icon_categorie" src="<?= $icones[$produit['categorie']] ?>" alt="catégorie">
+                    <?php endif; */?>
 
-                <p class="item_name">Nom du produit : <?= htmlspecialchars($produit['nom']) ?></p>
-                <p class="item_date">Date d'expiration : <?= htmlspecialchars($produit['date_peremption']) ?></p>
-            </div>
-        <?php endforeach; ?>
-    </div>
+                    <p class="item_name"><?= htmlspecialchars($produit['nom']) ?></p>
+                    <p class="item_quantity">Quantité : <?= htmlspecialchars($produit['quantite']) ?></p>
+                    <p class="item_date"><?= htmlspecialchars($produit['date_peremption']) ?></p>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
 
     <a href="#" class="add_product" id="openModalBtn">Ajouter un<br>produit</a>
 </main>
@@ -123,7 +133,7 @@ function isDateValid() {
 
 dateInput.addEventListener('input', () => {
     if (!isDateValid()) {
-        errorMsg.textContent = "⚠️ Ce produit est déjà périmé !";
+        errorMsg.textContent = "Ce produit est déjà périmé !";
     } else {
         errorMsg.textContent = "";
     }
@@ -138,3 +148,4 @@ form.addEventListener('submit', function(e) {
 </script>
 </body>
 </html>
+  
