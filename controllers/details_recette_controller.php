@@ -1,7 +1,11 @@
 <?php
 
+session_start();
+$compte_id = $_SESSION['compte_id'] ?? null;
+
 // model
 require_once __DIR__.'/../models/recette_model.php';
+require_once __DIR__.'/../models/favoris_model.php';
 
 $id = $_GET['id'] ?? null;
 
