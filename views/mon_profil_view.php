@@ -43,7 +43,7 @@
                     <img class="image_recette" src="<?= $recette['strMealThumb'] ?>" alt="image de la recette">
                 </a>
                 <a href="../controllers/retirer_favoris_controller.php?id=<?= $recette['idMeal'] ?>">
-                    <img class="star_icon" src="../public/icons/star_full.png" alt="icon pas encore favori">
+                    <img class="star_icon" src="../public/icons/star_full.png" alt="icon deja favori">
                 </a>
                 <a href="../controllers/details_recette_controller.php?id=<?= $recette['idMeal'] ?>">
                     <h3><?= $recette['strMeal'] ?></h3>
