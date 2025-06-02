@@ -90,6 +90,7 @@ $icones = [
                     <?php endif; */?>
 
                     <p class="item_name"><?= htmlspecialchars($produit['nom']) ?></p>
+                    <p class="item_quantity">Quantité : <?= htmlspecialchars($produit['quantite']) ?></p>
                     <p class="item_date"><?= htmlspecialchars($produit['date_peremption']) ?></p>
                 </div>
             <?php endforeach; ?>
