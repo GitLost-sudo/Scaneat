@@ -1,7 +1,7 @@
 <?php
 
 
-$connexion = new PDO('mysql:host=localhost;dbname=ScanEat', 'root', '');
+require_once __DIR__ . "/../models/db_connect.php";
 
 $message = "";
 $type_message = ""; // "success" ou "error"
@@ -12,7 +12,7 @@ if (isset($_POST['valider'])) {
         $email = htmlspecialchars($_POST['email']);// html special chars empeche a ce que le user mette des balises html 
         $password = $_POST['password'];//on définit mdp
 
-        $req = $connexion->prepare("SELECT* FROM compte WHERE email=?");//sélectionner tout les colonnes de compte QUAND email = ce que lon tape
+        $req = $db->prepare("SELECT* FROM compte WHERE email=?");//sélectionner tout les colonnes de compte QUAND email = ce que lon tape
         $req->execute(array($email));//exécution de la requete avec le mail rentré
         $user = $req->fetch();// on associe un user à une requete
 

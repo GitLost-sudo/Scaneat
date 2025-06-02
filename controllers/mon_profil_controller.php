@@ -7,9 +7,6 @@ $email = $_SESSION['email'];
 
 
 // model
-
-//var_dump($_POST);
-require_once __DIR__ . "/../models/compte_model.php";
 require_once __DIR__ . "/../models/recette_model.php";
 
 // traitement
