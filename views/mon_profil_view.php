@@ -36,16 +36,21 @@
         <div class="recette_container">
             <h2>Mes recettes favorites</h2>
             <?php
-            // foreach ($recettes as $recette) {
+            foreach ($recettes as $recette) {
             ?>
             <div class="recette">
-                <a href="#"><img class="image_recette" src="../public/img/<?= $recette['image'] ?>"
-                        alt="image de la recette"></a>
-                <a href="#"><img class="star_icon" src="../public/icons/star_full.png" alt="icon deja favori"></a>
-                <h3>Nom de la recette<!--<?= $recette['name'] ?>--></h3>
+                <a href="../controllers/details_recette_controller.php?id=<?= $recette['idMeal'] ?>">
+                    <img class="image_recette" src="<?= $recette['strMealThumb'] ?>" alt="image de la recette">
+                </a>
+                <a href="../controllers/retirer_favoris_controller.php?id=<?= $recette['idMeal'] ?>">
+                    <img class="star_icon" src="../public/icons/star_full.png" alt="icon deja favori">
+                </a>
+                <a href="../controllers/details_recette_controller.php?id=<?= $recette['idMeal'] ?>">
+                    <h3><?= $recette['strMeal'] ?></h3>
+                </a>
             </div>
             <?php
-            // }
+            }
             ?>
         </div>
     </main>
