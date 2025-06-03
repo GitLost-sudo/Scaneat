@@ -21,14 +21,14 @@
             <div id="produit-info" style="text-align: center; margin-top: 20px;"></div>
         </section>
         <?php
-        if (!isset($error)) {
+        if (!isset($error)) { // undefined
             ?>
             <img class="scan_image" src="../public/img/loupe.png" alt="Image de loupe">
             <?php
         }
-        else if ($error == false) {
+        else if ($error == false) { // false
             ?>
-            <form action="../controllers/ajout_produit_frigo_controller.php" method="post">
+            <form class="form_ajout" action="../controllers/ajout_produit_frigo_controller.php" method="post">
                 <h2><?= $product['name'] ?></h2>
                 <div>
                     <label for="categorie"><span>Categorie : </span></label>
@@ -65,17 +65,17 @@
             </form>
             <?php
         }
-        else if ($error == 'not-found') {
+        else if ($error == 'not-found') { // not-found
+            ?>
+            <img class="scan_image" src="../public/img/interrogation.png" alt="Image de point d'interrogation">
+            <p>Veuillez recommencer</p>
+            <?php
+        }
+        else { // true
             ?>
             <img class="scan_image" src="../public/img/croix_rouge.png" alt="Image de croix rouge">
             <p>Produit non reconnu</p>
             <p>Veuillez ajouter le produit manuellement dans le frigo</p>
-            <?php
-        }
-        else {
-            ?>
-            <img class="scan_image" src="../public/img/interrogation.png" alt="Image de point d'interrogation">
-            <p>Veuillez recommencer</p>
             <?php
         }
         ?>

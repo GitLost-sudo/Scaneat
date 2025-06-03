@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription</title>
+    <title>Connexion</title>
     <link href="../style.css" rel="stylesheet" />
 </head>
 
@@ -21,9 +21,10 @@
             </div>
         </header>
         <div class="titreInscription"> CONNEXION</div>
+        <?php
+        
+        ?>
         <form action="../controllers/connexion_controller.php" method="POST">
-
-
             <div class="champ"> Email : <br>
                 <input type="text" name="email">
             </div>
@@ -39,9 +40,7 @@
                     style="text-align: center; color: <?= $type_message === 'success' ? 'green' : 'red' ?>; margin-top: 15px;">
                     <?= $message ?>
                 </div>
-            <?php if($type_message='succes'){
-                header('Location: ../controllers/mon_profil_controller.php');
-            }   ?>
+
             <?php endif; ?>
 
         </form>
