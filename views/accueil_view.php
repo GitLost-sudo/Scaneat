@@ -17,52 +17,23 @@
  <?php 
 // tableau des icones celon la catégorie des produits
 $icones = [
-    'fruits' => '../public/icons/fruits_icone.png',
-    'légumes' => '../public/icons/legumes_icone.png',
-    'viandes' => '../public/icons/viandes_icone.png',
-    'produits laitiers' => '../public/icons/produits_laitiers_icone.png',
-    'boissons' => '../public/icons/boisson_icone.png',
-    'autres' => '../public/icons/autre_icone.png'
+    'fruit' => '../public/icons/fruits_icone.png',
+    'légume' => '../public/icons/legumes_icone.png',
+    'viande' => '../public/icons/viandes_icone.png',
+    'produit laitier' => '../public/icons/produits_laitiers_icone.png',
+    'boisson' => '../public/icons/boisson_icone.png',
+    'autre' => '../public/icons/autre_icone.png'
 ];
 ?>
 <!-- test-->
-<?php
-$alertes = [
-    [
-        'nom' => 'Pomme',
-        'catégorie' => 'fruits',
-        'date_peremption' => '2025-05-10'
-    ],
-    [
-        'nom' => 'Carotte',
-        'catégorie' => 'légumes',
-        'date_peremption' => '2025-06-15'
-    ],
-    [
-        'nom' => 'Poulet',
-        'catégorie' => 'viandes',
-        'date_peremption' => '2025-07-20'
-    ],
-    [
-        'nom' => 'Lait',
-        'catégorie' => 'produits laitiers',
-        'date_peremption' => '2025-08-25'
-    ],
-    [
-        'nom' => 'Jus d\'orange',
-        'catégorie' => 'boissons',
-        'date_peremption' => '2025-09-30'
-    ],
 
-];
-?>
 <!-- test fin -->
 <div class="notifications-container">
 <!-- Affichage des alertes de péremption -->
     <?php foreach($alertes as $alerte): ?>
     <?php  
-        $categorie = $alerte['catégorie'];
-        $icone = $icones[$categorie] ?? $icones['autres']; 
+        $categorie = $alerte['categorie'];
+        $icone = $icones[$categorie] ?? $icones['Autre']; 
     ?>
         <div class="notification">
            

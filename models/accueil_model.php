@@ -6,7 +6,8 @@ function urgent() {
     $sql ="SELECT 
 
     frigo.nom,
-    frigo.date_peremption
+    frigo.date_peremption,
+    frigo.categorie
 FROM 
     frigo 
 
