@@ -36,7 +36,7 @@
     <input type="hidden" name="calories" id="input-calories">
 
     <!-- Affichage des calories (visible) -->
-    <p><span>Calories /100g :</span> <span id="calories-affichees"><?= $product['calories'] ?? '...' ?></span></p>
+    <p><span>Calories /100g : </span><?= $product['calories'] ?? '...' ?></p>
 
     <div>
         <label for="categorie"><span>Catégorie :</span></label>
@@ -53,16 +53,11 @@
 
     <div>
         <label for="quantite"><span>Quantité :</span></label>
-        <select name="quantite" id="quantite">
-            <option value="">Sélectionner une quantité</option>
-            <?php for ($i = 1; $i <= 10; $i++): ?>
-                <option value="<?= $i ?>"><?= $i ?></option>
-            <?php endfor; ?>
-        </select>
+        <input type="number" name="quantitee" id="quantitee" min="1" value="1" required>
     </div>
 
     <div>
-        <label for="date_peremption">Date de péremption : </label>
+        <label for="date_peremption"><span>Date de péremption :</span></label>
         <input type="date" name="date_peremption" required><br>
     </div>
 
