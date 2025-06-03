@@ -1,15 +1,36 @@
 <?php
+session_start();
+
+// Tu récupères les données de session
+$compte_id = $_SESSION['compte_id'];
+$username = $_SESSION['username'];
+$email = $_SESSION['email'];
+
+
+// Inclusion du modèle
 require_once __DIR__ . '/../models/supprimer_produit_frigo_model.php';
+require_once __DIR__ . '/../models/frigo_model.php';
+
+// Gestion d'erreur
 $error = null;
-if($_SERVER['REQUEST_METHOD']=='GET')
-{
-    //Guard
-    if (!isset($_GET['compte_id']) || !is_numeric($_GET['compte_id'])) {
-        throw new Exception("Paramètres invalides");
-    }
+
+
     
-    $compte_id = $_GET['compte_id'];
-    supprimer_produit_frigo($compte_id);
-    header('Location: ../views/frigo_view.php');
-}
-require_once __DIR__.'/../views/frigo_view.php';
+        
+        $frigo_id = $_GET['id'];
+        // Appel à la fonction d'ajout
+       supprimer_produit_frigo($frigo_id);
+        $success = "Produit supprimé avec succès !";
+        // Redirection après ajout
+
+        
+    /*
+} catch (Throwable $e) {
+    // En cas d'erreur, stocke le message pour affichage
+    $error = $e->getMessage();
+}*/
+
+$produits = frigo($compte_id);
+
+// Affichage de la vue avec ou sans erreur
+require_once __DIR__ . '/../views/frigo_view.php'; 

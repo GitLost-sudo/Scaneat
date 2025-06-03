@@ -22,24 +22,7 @@
 <?php endif; ?>
 <?php require_once __DIR__.'/../views/header_org.php'; ?>
 
-<!-- Modal modification produit -->
-<div id="modifyProduct" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2 id="nomProduit"></h2>
-    <form action="../controllers/modifier_produit_controller.php" method="POST">
-      <input type="hidden" name="id" id="produitId">
-      
-      <label>Quantité :</label><br>
-      <button type="button" id="btnMoins">-</button>
-      <input type="text" name="quantite" id="quantiteInput"  required style="width: 80px; text-align: center; justify-content: center; transform: translateX(40%) translateY(50%);">
-      <button type="button" id="btnPlus">+</button><br><br>
 
-      <input type="submit" value="Confirmer la modification" style="background-color: #498A0C;">
-      <input type="submit" value="Tout supprimer" style="background-color: red;">
-    </form>
-  </div>
-</div>
 
 <!-- Modal ajout produit -->
 <div id="addProductModal" class="modal">
@@ -99,12 +82,11 @@ $icones = [
                         <img class="item_img" src="../public/icons/autre_icone.png" alt="produit">
                     <?php endif; ?>
 
-                    <a href="#" class="remove_product modify-btn"
-                       data-id="<?= $produit['id'] ?>"
-                       data-nom="<?= htmlspecialchars($produit['nom']) ?>"
-                       data-quantite="<?= htmlspecialchars($produit['quantite']) ?>">
-                        <img class="icon_remove" src="../public/icons/remove.png" alt="icone de suppression">
-                    </a>
+                    <a href="../controllers/supprimer_produit_controller.php?id=<?= $produit['frigo_id'] ?>" 
+   class="remove_product"
+   onclick="return confirm('Êtes-vous sûr ?')">
+   <img class="icon_remove" src="../public/icons/remove.png" alt="icone de suppression">
+</a>
 
                     <p class="item_name"><?= htmlspecialchars($produit['nom']) ?></p>
                     <p class="item_quantity">Quantité : <?= htmlspecialchars($produit['quantite']) ?></p>
@@ -120,45 +102,6 @@ $icones = [
 <?php require_once __DIR__.'/../views/nav_bar.php'; ?>
 
 <script>
-// Gestion ouverture modal modifier
-document.querySelectorAll(".modify-btn").forEach(function(btn) {
-    btn.addEventListener("click", function(event) {
-        event.preventDefault();
-        const modal = document.getElementById("modifyProduct");
-        modal.style.display = "block";
-
-        const nom = btn.getAttribute("data-nom");
-        const quantite = btn.getAttribute("data-quantite");
-        const id = btn.getAttribute("data-id");
-
-        document.getElementById("nomProduit").textContent = "Modifier : " + nom;
-        document.getElementById("quantiteInput").value = quantite;
-        document.getElementById("produitId").value = id;
-    });
-});
-
-// + et -
-document.getElementById("btnPlus").addEventListener("click", function() {
-    let input = document.getElementById("quantiteInput");
-    input.value = parseInt(input.value) + 1;
-});
-document.getElementById("btnMoins").addEventListener("click", function() {
-    let input = document.getElementById("quantiteInput");
-    if (parseInt(input.value))  {
-        input.value = parseInt(input.value) - 1;
-    }
-});
-
-// Fermeture modal modifier
-document.querySelector("#modifyProduct .close").addEventListener("click", function() {
-    document.getElementById("modifyProduct").style.display = "none";
-});
-window.addEventListener("click", function(event) {
-    const modal = document.getElementById("modifyProduct");
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-});
 
 // Ajout produit
 document.getElementById("openModalBtn").addEventListener("click", function(event) {
