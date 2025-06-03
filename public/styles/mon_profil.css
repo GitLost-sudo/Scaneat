@@ -4,6 +4,9 @@ h1 {
     padding-top: 0.67em;
     text-align: center;
 }
+h2 {
+    text-align: center;
+}
 #password_reinitialisation{
     display: flex;
     flex-direction: column;
@@ -37,7 +40,7 @@ input[type="submit"]:hover{
     background-color: #ff6f00;
 }
 .recette_container{
-    margin: 0 2em 0 2em;
+    margin: 0 4em 0 4em;
     padding: 1em;
     display: flex;
     flex-direction: column;
@@ -63,9 +66,20 @@ input[type="submit"]:hover{
 }
 .star_icon{
     width: 2em;
+    align-self: flex-start;
 }
 .image_recette{
     height: 100%;
     width: auto;
     border-radius: 1em
+}
+.recette a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    text-decoration: none;
+}
+main p {
+    margin: 0;
 }

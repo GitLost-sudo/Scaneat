@@ -7,6 +7,7 @@ $email = $_SESSION['email'];
 
 // models
 require_once __DIR__.'/../models/recette_model.php';
+require_once __DIR__.'/../models/favoris_model.php';
 
 // controllers
 $vegetarien = isset($_POST['vegetarien']) ? true : false;
