@@ -1,6 +1,12 @@
 <?php
 
 session_start();
+
+// Tu récupères les données de session
+$compte_id = $_SESSION['compte_id'];
+$username = $_SESSION['username'];
+$email = $_SESSION['email'];
+
 require_once "../models/frigo_model.php";
 
 // Vérifie que compte_id est bien dans la session

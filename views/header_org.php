@@ -56,10 +56,10 @@
         <img src="../public/img/SCAN'EAT_Ecriture.png" alt="Scan Eat">
     </div>
     <div class="iconemenu">
-        <form id="profilForm" action="../controllers/mon_profil_controller.php" method="POST">
+        <a href="../controllers/mon_profil_controller.php" alt="Profil">
             <input type="hidden" name="email" value="<?= $email_utilisateur_connecté ?>">
             <input type="hidden" name="password" value="<?= $password ?>">
             <img src="../public/icons/utilisateur.png" alt="Menu" style="cursor:pointer;" onclick="document.getElementById('profilForm').submit();">
-        </form>
+        </a>
     </div>
 </header>

@@ -1,10 +1,14 @@
 <?php
-$email_utilisateur_connecté = $_POST['email'] ?? '';
-$password = $_POST['password'] ?? '';
-var_dump($email);
+session_start();
+// Tu récupères les données de session
+$compte_id = $_SESSION['compte_id'];
+$username = $_SESSION['username'];
+$email = $_SESSION['email'];
 
 // models
 require_once __DIR__.'/../models/recette_model.php';
+require_once __DIR__.'/../models/favoris_model.php';
+require_once __DIR__.'/../models/frigo_model.php';
 
 // controllers
 $vegetarien = '';
@@ -13,8 +17,11 @@ $sans_gluten = '';
 $sans_lactose = '';
 $halal = '';
 
-$recettes = list_recette_by_filters($vegetarien, $vegan, $sans_gluten, $sans_lactose, $halal);
-
+if (have_any_products($compte_id)) {
+    $recettes = list_recette_by_filters($vegetarien, $vegan, $sans_gluten, $sans_lactose, $halal, $compte_id);
+} else {
+    $recettes = list_recette();
+}
 
 // views
 require_once __DIR__.'/../views/liste_recette_view.php';

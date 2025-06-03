@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scan'Eat Acceuil</title>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="..\public\styles\accueil.css">
+    <link rel="stylesheet" href="../public/styles/common.css">
 </head>
-
-<link rel="stylesheet" href="..\public\styles\accueil.css">
 <body>
 <?php include '../views/header_org.php'; ?>
+<main>
 <div class ="T1">
-<h1>Bonjour, <span> <?php $username ?></span>!</h1>
+<h1>Bonjour, <span> <?php echo $username ?></span>!</h1>
 </div>
  <?php 
 // tableau des icones celon la catégorie des produits
@@ -65,17 +65,47 @@ $alertes = [
         $icone = $icones[$categorie] ?? $icones['autres']; 
     ?>
         <div class="notification">
-            <p> 
+           
                 <img src="<?=$icone?>" alt="<?= $categorie?>"> 
-                <?=($alerte['nom'])?> expire le: <?= ($alerte['date_peremption']) ?> 
+             <p>   <?=($alerte['nom'])?> expire le: <?= ($alerte['date_peremption']) ?> </p>
                 <img src="../public/icons/urgent_icone.png" alt="urgent!">
-            </p>
+           
         </div>
     <?php endforeach; ?>
-</div> 
-    <div class ="recette">
-    <p>Quelques recettes de <strong>saison</strong>:</p>
-    </div>
+</div>
+<h2>Recomandations de recettes</h2>
+<div class="recette_container">
+    <?php
+    foreach ($recettes as $recette) {
+        ?>
+        <div class="recette">
+            <a href="../controllers/details_recette_controller.php?id=<?= $recette['idMeal'] ?>">
+                <img class="image_recette" src="<?= $recette['strMealThumb'] ?>" alt="image de la recette">
+            </a>
+            <?php
+            if (is_favori($compte_id, $recette['idMeal'])) {
+                ?>
+                <a href="../controllers/retirer_favoris_controller.php?id=<?= $recette['idMeal'] ?>">
+                    <img class="star_icon" src="../public/icons/star_full.png" alt="icon deja favori">
+                </a>
+                <?php
+            } else {
+                ?>
+                <a href="../controllers/ajouter_favoris_controller.php?id=<?= $recette['idMeal'] ?>">
+                    <img class="star_icon" src="../public/icons/star_empty.png" alt="icon pas encore favori">
+                </a>
+                <?php
+            }
+            ?>
+            <a href="../controllers/details_recette_controller.php?id=<?= $recette['idMeal'] ?>">
+                <h3><?= $recette['strMeal'] ?></h3>
+            </a>
+        </div>
+        <?php
+    }
+    ?>
+</div>
+</main>
     <?php include '../views/nav_bar.php'; ?>
 </body>
 </html>

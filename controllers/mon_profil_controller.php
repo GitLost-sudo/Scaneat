@@ -1,22 +1,19 @@
 <?php
-$email_utilisateur_connecté = $_POST['email'] ?? '';
-$password = $_POST['password'] ?? '';
-var_dump($_POST);
-
-//On démarre une nouvelle session
 session_start();
-$id_session = session_id();
+// Tu récupères les données de session
+$compte_id = $_SESSION['compte_id'];
+$username = $_SESSION['username'];
+$email = $_SESSION['email'];
 
 
 // model
 
 //var_dump($_POST);
-require_once __DIR__ . "/../models/compte_model.php";
+require_once __DIR__ . "/../models/favoris_model.php";
 require_once __DIR__ . "/../models/recette_model.php";
 
 // traitement
-
+$recettes = get_favoris_by_compte_id($compte_id);
 
 // view
-
 require_once __DIR__ . "/../views/mon_profil_view.php";
