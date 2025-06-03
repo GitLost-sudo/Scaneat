@@ -6,4 +6,4 @@ function supprimer_produit_frigo($frigo_id) {
     $sql = "DELETE FROM frigo WHERE frigo_id = :frigo_id";
     $query = $db->prepare($sql);
     $query->execute([ ':frigo_id' => $frigo_id ]);
-};
+}

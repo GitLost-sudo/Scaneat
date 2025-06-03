@@ -64,6 +64,7 @@ h1{
     grid-column: 1 / 3;
     font-size: small;
     color: #c7ff72;
+    margin-left: 1.5em;
 }
 .item_quantity {
     grid-column: 1 / 3;
@@ -156,4 +157,19 @@ h1{
   }
   #catégorie {
     color: white;
+  }
+  .modal #btnPlus {
+   transform:  translateX(170%) translateY(100%);
+   width: 3em;
+    height: 2em;
+}
+ .modal #btnMoins {
+   transform:  translateX(0%) translateY(95%);
+   width: 3em;
+    height: 2em;
+    font-size: 0.9em;
+  }
+  .modal #nomProduit {
+   font-family: 'archivo black', sans-serif;
+   -webkit-text-stroke: 0.01em black;
   }
