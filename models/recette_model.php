@@ -21,7 +21,7 @@ function list_recette_by_frigo($compte_id) {
     $sql = "SELECT * FROM frigo WHERE compte_id = :compte_id;";
     $stmt = $db->prepare($sql);
     $stmt->execute([ ':compte_id' => $compte_id]);
-    $frigo_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $frigo_items = $stmt->fetchAll();
 
     $filtered_recipes = [];
 
