@@ -26,4 +26,4 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     }
 }
 
-require_once __DIR__."/../views/inscription_view.php";
+require_once __DIR__."/../controllers/accueil_controller.php";
