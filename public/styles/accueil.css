@@ -15,6 +15,14 @@ h1 span{
     color: green;
     -webkit-text-stroke: 0.01em black;
 }
+h2{
+    color: white;
+    text-align: center;
+    font-size: 3vh;
+    font-family: 'Archivo Black', sans-serif;
+    margin-top: 3vh;
+    -webkit-text-stroke: 0.04em black;
+}
 .notifications-container {
     border: 2px solid black;
     border-radius: 20px;
@@ -56,4 +64,47 @@ h1 span{
     margin-left: 2vw;
     margin-bottom: 3vh;
    
+}
+
+/* Recettes */
+.recette_container{
+    padding: 0 4em 0 4em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-height: 30vh;
+    overflow-y: auto;
+}
+.recette{
+    background-color: #d9d9d9;
+    border-radius: 1em;
+    margin: 0.5em 0 0.5em 0;
+    padding: 0.5em;
+    display: grid;
+    grid-template: 80% 1fr / 85% 1fr;
+    height: 10em;
+}
+.recette_container h2{
+    margin: 0;
+}
+.recette_container h3{
+    margin: 0;
+    grid-column: span 2;
+    text-wrap: wrap;
+}
+.star_icon{
+    width: 2em;
+    align-self: flex-start;
+}
+.image_recette{
+    height: 100%;
+    width: auto;
+    border-radius: 1em
+}
+.recette a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    text-decoration: none;
 }

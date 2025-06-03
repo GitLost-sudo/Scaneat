@@ -6,7 +6,6 @@ $compte_id = $_SESSION['compte_id'];
 $username = $_SESSION['username'];
 $email = $_SESSION['email'];
 
-echo "compte_id: " . $_SESSION['compte_id'];
 // Inclusion du modèle
 require_once __DIR__ . '/../models/ajout_produit_frigo_model.php';
 require_once __DIR__ . '/../models/frigo_model.php';

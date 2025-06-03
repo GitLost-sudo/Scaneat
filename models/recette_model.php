@@ -6,17 +6,27 @@ require_once __DIR__.'/../models/db_connect.php';
 // Create
 
 // Read
+function list_recette() {
+    $url = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
+    $response = file_get_contents($url);
+    if ($response === false) {
+        return [];
+    }
+    $data = json_decode($response, true);
+    return $data['meals'];
+}
+
 function list_recette_by_frigo($compte_id) {
     global $db;
     $sql = "SELECT * FROM frigo WHERE compte_id = :compte_id;";
     $stmt = $db->prepare($sql);
     $stmt->execute([ ':compte_id' => $compte_id]);
     $frigo_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+
     $filtered_recipes = [];
-    
+
     foreach ($frigo_items as $item) {
-        $nom = strtolower(trim($item['nom']));
+        $nom = strtolower(str_replace(' ', '', $item['nom']));
         $url = "https://www.themealdb.com/api/json/v1/1/search.php?s=$nom";
         $response = file_get_contents($url);
         $data = json_decode($response, true);
@@ -33,9 +43,12 @@ function list_recette_by_frigo($compte_id) {
                 }
             }
 
-            // Si l'ingrédient du frigo est présent dans la recette, on ajoute la recette
-            if (in_array($nom, $ingredients)) {
-                $filtered_recipes[] = $meal;
+            // Vérifie si l'ingrédient du frigo est contenu dans un ingrédient de la recette
+            foreach ($ingredients as $ingredient) {
+                if (strpos($ingredient, $nom) !== false) {
+                    $filtered_recipes[] = $meal;
+                    break; // On ajoute la recette une seule fois
+                }
             }
         }
     }
@@ -69,9 +82,9 @@ function get_recette_by_id($id, $compte_id) {
     if ($response === false) {
         return null;
     }
-    $recettes_frigo = list_recette_by_frigo($response, $compte_id);
+    $data = json_decode($response, true);
     // On retourne la première recette trouvée dans le frigo, sinon null
-    return $recettes_frigo[0] ?? null;
+    return $data['meals'][0] ?? null;
 }
 
 function list_recette_by_filters($vegetarien, $vegan, $sans_gluten, $sans_lactose, $halal, $compte_id) {

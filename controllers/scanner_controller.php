@@ -8,6 +8,7 @@ $email = $_SESSION['email'];
 // model
 
 $error = false; // undefined, false, 'not-found', ou autre
+
 $product = [
     'name' => 'Nom du produit',
     'calories' => 100,
@@ -17,6 +18,9 @@ $product = [
         ['id' => 3, 'name' => 'Viandes'],
     ],
 ];
+
+$categorie = $_POST['categorie'] ?? '';
+
 
 // view
 require_once __DIR__.'/../views/scanner_view.php';

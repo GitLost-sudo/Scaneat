@@ -72,7 +72,39 @@ $alertes = [
            
         </div>
     <?php endforeach; ?>
-</div> 
+</div>
+<h2>Recomandations de recettes</h2>
+<div class="recette_container">
+    <?php
+    foreach ($recettes as $recette) {
+        ?>
+        <div class="recette">
+            <a href="../controllers/details_recette_controller.php?id=<?= $recette['idMeal'] ?>">
+                <img class="image_recette" src="<?= $recette['strMealThumb'] ?>" alt="image de la recette">
+            </a>
+            <?php
+            if (is_favori($compte_id, $recette['idMeal'])) {
+                ?>
+                <a href="../controllers/retirer_favoris_controller.php?id=<?= $recette['idMeal'] ?>">
+                    <img class="star_icon" src="../public/icons/star_full.png" alt="icon deja favori">
+                </a>
+                <?php
+            } else {
+                ?>
+                <a href="../controllers/ajouter_favoris_controller.php?id=<?= $recette['idMeal'] ?>">
+                    <img class="star_icon" src="../public/icons/star_empty.png" alt="icon pas encore favori">
+                </a>
+                <?php
+            }
+            ?>
+            <a href="../controllers/details_recette_controller.php?id=<?= $recette['idMeal'] ?>">
+                <h3><?= $recette['strMeal'] ?></h3>
+            </a>
+        </div>
+        <?php
+    }
+    ?>
+</div>
 </main>
     <?php include '../views/nav_bar.php'; ?>
 </body>

@@ -76,16 +76,19 @@
                         <img class="image_recette" src="<?= $recette['strMealThumb'] ?>" alt="image de la recette">
                     </a>
                     <?php
-                    /*if ($recette['is_favorite']) {
+                    if (is_favori($compte_id, $recette['idMeal'])) {
                         ?>
-                        <a href="../controllers/retirer_favoris_controller.php?id=<?= $recette['idMeal'] ?>"><img class="star_icon" src="../public/icons/star_full.png" alt="icon deja favori"></a>
+                        <a href="../controllers/retirer_favoris_controller.php?id=<?= $recette['idMeal'] ?>">
+                            <img class="star_icon" src="../public/icons/star_full.png" alt="icon deja favori">
+                        </a>
                         <?php
-                    } else {*/
-                    ?>
-                    <a href="../controllers/ajouter_favoris_controller.php?id=<?= $recette['idMeal'] ?>"><img
-                            class="star_icon" src="../public/icons/star_empty.png" alt="icon pas encore favori"></a>
-                    <?php
-                    //}
+                    } else {
+                        ?>
+                        <a href="../controllers/ajouter_favoris_controller.php?id=<?= $recette['idMeal'] ?>">
+                            <img class="star_icon" src="../public/icons/star_empty.png" alt="icon pas encore favori">
+                        </a>
+                        <?php
+                    }
                     ?>
                     <a href="../controllers/details_recette_controller.php?id=<?= $recette['idMeal'] ?>">
                         <h3><?= $recette['strMeal'] ?></h3>
