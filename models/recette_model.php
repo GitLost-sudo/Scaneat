@@ -26,7 +26,7 @@ function list_recette_by_frigo($compte_id) {
     $filtered_recipes = [];
 
     foreach ($frigo_items as $item) {
-        $nom = strtolower($item['nom']);
+        $nom = strtolower(str_replace(' ', '', $item['nom']));
         $url = "https://www.themealdb.com/api/json/v1/1/search.php?s=$nom";
         $response = file_get_contents($url);
         $data = json_decode($response, true);

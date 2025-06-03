@@ -8,6 +8,7 @@ $email = $_SESSION['email'];
 // model
 
 $error = false; // undefined, false, 'not-found', ou autre
+
 $product = [
     'name' => 'Nom du produit',
     'calories' => 100,
