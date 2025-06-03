@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__."/db_connect.php";
+require_once __DIR__."/../models/db_connect.php";
 #model lié a la gestion des données des utilisateurs
 
 //Create
@@ -17,7 +17,7 @@ function createUser($username, $email, $password)
         ":email" => $email,
         ":password" => password_hash($password, PASSWORD_BCRYPT)
     ));
-    return "Inscription réussie !";
+    return true;
 }
 /*
 function loginUser($email, $password) {

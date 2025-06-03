@@ -5,77 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scan'Eat Acceuil</title>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="..\public\styles\accueil.css">
+    <link rel="stylesheet" href="../public/styles/common.css">
 </head>
-
-<link rel="stylesheet" href="..\public\styles\accueil.css">
 <body>
 <?php include '../views/header_org.php'; ?>
+<main>
 <div class ="T1">
-<h1>Bonjour, <span> <?php $username ?>Belmihoub</span>!</h1>
+<h1>Bonjour, <span> <?php echo $username ?></span>!</h1>
 </div>
  <?php 
 // tableau des icones celon la catégorie des produits
 $icones = [
-    'fruits' => '../public/icons/fruits_icone.png',
-    'légumes' => '../public/icons/legumes_icone.png',
-    'viandes' => '../public/icons/viandes_icone.png',
-    'produits laitiers' => '../public/icons/produits_laitiers_icone.png',
-    'boissons' => '../public/icons/boisson_icone.png',
-    'autres' => '../public/icons/autre_icone.png'
+    'fruit' => '../public/icons/fruits_icone.png',
+    'légume' => '../public/icons/legumes_icone.png',
+    'viande' => '../public/icons/viandes_icone.png',
+    'produit laitier' => '../public/icons/produits_laitiers_icone.png',
+    'boisson' => '../public/icons/boisson_icone.png',
+    'autre' => '../public/icons/autre_icone.png'
 ];
 ?>
-<!-- test-->
-<?php
-$alertes = [
-    [
-        'nom' => 'Pomme',
-        'catégorie' => 'fruits',
-        'date_peremption' => '2025-05-10'
-    ],
-    [
-        'nom' => 'Carotte',
-        'catégorie' => 'légumes',
-        'date_peremption' => '2025-06-15'
-    ],
-    [
-        'nom' => 'Poulet',
-        'catégorie' => 'viandes',
-        'date_peremption' => '2025-07-20'
-    ],
-    [
-        'nom' => 'Lait',
-        'catégorie' => 'produits laitiers',
-        'date_peremption' => '2025-08-25'
-    ],
-    [
-        'nom' => 'Jus d\'orange',
-        'catégorie' => 'boissons',
-        'date_peremption' => '2025-09-30'
-    ],
 
-];
-?>
 <!-- test fin -->
 <div class="notifications-container">
 <!-- Affichage des alertes de péremption -->
     <?php foreach($alertes as $alerte): ?>
     <?php  
-        $categorie = $alerte['catégorie'];
+        $categorie = $alerte['categorie'];
         $icone = $icones[$categorie] ?? $icones['autres']; 
     ?>
         <div class="notification">
-            <p> 
+           
                 <img src="<?=$icone?>" alt="<?= $categorie?>"> 
-                <?=($alerte['nom'])?> expire le: <?= ($alerte['date_peremption']) ?> 
+             <p>   <?=($alerte['nom'])?> expire le: <?= ($alerte['date_peremption']) ?> </p>
                 <img src="../public/icons/urgent_icone.png" alt="urgent!">
-            </p>
+           
         </div>
     <?php endforeach; ?>
-</div> 
-    <div class ="recette">
-    <p>Quelques recettes de <strong>saison</strong>:</p>
-    </div>
+</div>
+<h2>Recomandations de recettes</h2>
+<div class="recette_container">
+    <?php
+    foreach ($recettes as $recette) {
+        ?>
+        <div class="recette">
+            <a href="../controllers/details_recette_controller.php?id=<?= $recette['idMeal'] ?>">
+                <img class="image_recette" src="<?= $recette['strMealThumb'] ?>" alt="image de la recette">
+            </a>
+            <?php
+            if (is_favori($compte_id, $recette['idMeal'])) {
+                ?>
+                <a href="../controllers/retirer_favoris_controller.php?id=<?= $recette['idMeal'] ?>">
+                    <img class="star_icon" src="../public/icons/star_full.png" alt="icon deja favori">
+                </a>
+                <?php
+            } else {
+                ?>
+                <a href="../controllers/ajouter_favoris_controller.php?id=<?= $recette['idMeal'] ?>">
+                    <img class="star_icon" src="../public/icons/star_empty.png" alt="icon pas encore favori">
+                </a>
+                <?php
+            }
+            ?>
+            <a href="../controllers/details_recette_controller.php?id=<?= $recette['idMeal'] ?>">
+                <h3><?= $recette['strMeal'] ?></h3>
+            </a>
+        </div>
+        <?php
+    }
+    ?>
+</div>
+</main>
     <?php include '../views/nav_bar.php'; ?>
 </body>
 </html>

@@ -16,66 +16,67 @@
         <h1>Scanner le code barre</h1>
         <section>
             <div id="scanner-container" style="width:100%; max-width:400px; margin:auto;"></div>
-            <div id="scanner-laser"></div>
             <p id="resultat-scan" style="text-align:center;"></p>
             <div id="produit-info" style="text-align: center; margin-top: 20px;"></div>
         </section>
         <?php
-        if (!isset($error)) {
+        if (!isset($error)) { // undefined
             ?>
             <img class="scan_image" src="../public/img/loupe.png" alt="Image de loupe">
             <?php
         }
-        else if ($error == false) {
+        else if ($error == false) { // false
             ?>
-            <form action="../controllers/ajout_produit_frigo_controller.php" method="post">
-                <h2><?= $product['name'] ?></h2>
-                <div>
-                    <label for="categorie"><span>Categorie : </span></label>
-                    <select name="categorie" id="categorie">
-                        <option value="" >Sélectionner une catégorie</option>
-                        <?php
-                        foreach ($categories as $category) {
-                            ?>
-                            <option value="<?= $category['id'] ?>"><?= $category['name'] ?></option>
-                            <?php
-                        }
-                        ?>
-                    </select>
-                </div>
-                <p><span>Calories /100g :</span> <?= $product['calories'] ?></p>
-                <div>
-                    <label for="quantite"><span>Quantité :</span></label>
-                    <select name="quantite" id="quantite">
-                        <option value="">Selectionner une quantité</option>
-                        <?php
-                        for ($i = 0; $i < 10; $i++) {
-                            ?>
-                            <option value="<?= $i ?>"><?= $i ?></option>
-                            <?php
-                        }
-                        ?>
-                    </select>
-                </div>
-                <div>
-                    <label for="date_expiration"><span>Date d'expiration :</span></label>
-                    <input type="date" name="date_expiration" id="date_expiration" required>
-                </div>
-                <input type="submit" value="Ajouter">
-            </form>
+            <form class="form_ajout" action="../controllers/ajouter_produit_controller.php" method="post">
+    <h2 id="nom-produit"><?= $product['name'] ?? 'Nom du produit' ?></h2>
+
+    <!-- Champs cachés pour envoi -->
+    <input type="hidden" name="nom" id="input-nom">
+    <input type="hidden" name="code_barre" id="input-code-barre">
+    <input type="hidden" name="calories" id="input-calories">
+
+    <!-- Affichage des calories (visible) -->
+    <p><span>Calories /100g : </span><?= $product['calories'] ?? '...' ?></p>
+
+    <div>
+        <label for="categorie"><span>Catégorie :</span></label>
+        <select name="categorie" id="categorie" required>
+          <option value="">--Choisissez une catégorie--</option>
+          <option value="légume">Légume</option>
+          <option value="fruit">Fruit</option>
+          <option value="viande">Viande</option>
+          <option value="produit_laitiers">Produit laitier</option>
+          <option value="boissons">Boisson</option>
+          <option value="autre">Autre</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="quantite"><span>Quantité :</span></label>
+        <input type="number" name="quantitee" id="quantitee" min="1" value="1" required>
+    </div>
+
+    <div>
+        <label for="date_peremption"><span>Date de péremption :</span></label>
+        <input type="date" name="date_peremption" required><br>
+    </div>
+
+    <input type="submit" value="Ajouter">
+</form>
+
             <?php
         }
-        else if ($error == 'not-found') {
+        else if ($error == 'not-found') { // not-found
+            ?>
+            <img class="scan_image" src="../public/img/interrogation.png" alt="Image de point d'interrogation">
+            <p>Veuillez recommencer</p>
+            <?php
+        }
+        else { // true
             ?>
             <img class="scan_image" src="../public/img/croix_rouge.png" alt="Image de croix rouge">
             <p>Produit non reconnu</p>
             <p>Veuillez ajouter le produit manuellement dans le frigo</p>
-            <?php
-        }
-        else {
-            ?>
-            <img class="scan_image" src="../public/img/interrogation.png" alt="Image de point d'interrogation">
-            <p>Veuillez recommencer</p>
             <?php
         }
         ?>
@@ -98,9 +99,9 @@ document.addEventListener('DOMContentLoaded', () => {
             readers: ["ean_reader", "upc_reader"]
         },
         locate: true
-    }, function (err) {
+    }, err => {
         if (err) {
-            console.error("Erreur Quagga : ", err);
+            console.error("Erreur Quagga :", err);
             return;
         }
         Quagga.start();
@@ -113,37 +114,42 @@ document.addEventListener('DOMContentLoaded', () => {
         scanned = true;
 
         const code = data.codeResult.code;
-        document.getElementById("resultat-scan").textContent = "Code détecté : " + code;
+        document.getElementById("resultat-scan").textContent = "Code barre du produit : " + code;
 
         fetch(`https://world.openfoodfacts.org/api/v0/product/${code}.json`)
             .then(response => response.json())
             .then(data => {
                 if (data.status === 1) {
                     const product = data.product;
+                    const nomProduit = product.product_name || "";
+                    const calories = product.nutriments["energy-kcal_100g"] || "";
+
+                    // Affichage visuel
                     document.getElementById("produit-info").innerHTML = `
-                        <h2>${product.product_name || "Nom inconnu"}</h2>
-                        <p><strong>Marque :</strong> ${product.brands || "Inconnue"}</p>
-                        <p><strong>Catégorie :</strong> ${product.categories || "Non précisée"}</p>
-                        <p><strong>Calories /100g :</strong> ${product.nutriments["energy-kcal_100g"] || "N/A"}</p>
-                        ${product.image_url ? `<img src="${product.image_url}" alt="Image du produit" style="max-width: 150px;">` : ""}
-                    `;
+                        ${product.image_url ? `<img src="${product.image_url}" alt="Image du produit" style="max-width: 150px;">` : ""} 
+                    `;//ça va afficher l'image venant de la base de données
+
+                    // Remplissage du formulaire
+                    document.getElementById("nom-produit").textContent = nomProduit;
+                    document.getElementById("input-nom").value = nomProduit;
+                    document.getElementById("input-code-barre").value = code;
+                    document.getElementById("input-calories").value = calories;
+                    document.getElementById("calories-affichees").textContent = calories;
+
                 } else {
-                    document.getElementById("produit-info").innerHTML = `
-                        <p style="color:red;">Produit non trouvé.</p>
-                    `;
+                    document.getElementById("produit-info").innerHTML = `<p style="color:red;">Produit non trouvé.</p>`;
                 }
 
                 Quagga.stop();
             })
             .catch(err => {
-                console.error("Erreur lors de la récupération du produit :", err);
-                document.getElementById("produit-info").innerHTML = `
-                    <p style="color:red;">Erreur lors de la récupération des données.</p>
-                `;
+                console.error("Erreur API :", err);
+                document.getElementById("produit-info").innerHTML = `<p style="color:red;">Erreur lors de la récupération des données.</p>`;
                 Quagga.stop();
             });
     });
 });
+
 </script>
 </body>
 </html>
