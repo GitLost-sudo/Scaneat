@@ -40,7 +40,7 @@ h1{
     width: 22vw;
     height: 30vh;
     display: grid;
-    grid-template: 60% 4fr 5fr / 80% 1fr;
+    grid-template: 40% 3fr 1fr 1fr / 80% 1fr;
     border-radius: 1em;
     justify-content: center;
     align-items: center;
@@ -54,11 +54,8 @@ h1{
     display: flex;
     justify-content:center;
     align-items: center;
-    font-size: 1.5em;
-    transform: translateY(-20%);
+    font-size: 1em;    
     color: #f0efed;
-
-
 }
 .item_date{
     grid-column: 1 / 3;
