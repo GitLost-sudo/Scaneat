@@ -15,6 +15,7 @@
 
     ?>
     <main>
+
         <h1>Profil</h1>
         <form id="password_reinitialisation" action="" method="post">
             <label for="email">Email :</label>
@@ -28,10 +29,21 @@
 
             <input type="submit" value="Changer de mot de passe">
         </form>
-        
+        <?php if (isset($message)): ?>
+            <div style="margin-top:10px; text-align:center; color: <?= ($type_message === 'success') ? 'green' : 'red'; ?>;">
+                <?= htmlspecialchars($message) ?>
+            </div>
+        <?php endif; ?>
+
+
         <form action="deconnexion_controller.php" method="POST">
             <input type="submit" value="Déconnexion">
         </form>
+
+
+
+
+
         <h2>Mes recettes favorites</h2>
         <div class="recette_container">
             <?php
@@ -41,23 +53,24 @@
                 <?php
             }
             foreach ($recettes as $recette) {
-            ?>
-            <div class="recette">
-                <a href="../controllers/details_recette_controller.php?id=<?= $recette['idMeal'] ?>">
-                    <img class="image_recette" src="<?= $recette['strMealThumb'] ?>" alt="image de la recette">
-                </a>
-                <a href="../controllers/retirer_favoris_controller.php?id=<?= $recette['idMeal'] ?>">
-                    <img class="star_icon" src="../public/icons/star_full.png" alt="icon deja favori">
-                </a>
-                <a href="../controllers/details_recette_controller.php?id=<?= $recette['idMeal'] ?>">
-                    <h3><?= $recette['strMeal'] ?></h3>
-                </a>
-            </div>
-            <?php
+                ?>
+                <div class="recette">
+                    <a href="../controllers/details_recette_controller.php?id=<?= $recette['idMeal'] ?>">
+                        <img class="image_recette" src="<?= $recette['strMealThumb'] ?>" alt="image de la recette">
+                    </a>
+                    <a href="../controllers/retirer_favoris_controller.php?id=<?= $recette['idMeal'] ?>">
+                        <img class="star_icon" src="../public/icons/star_full.png" alt="icon deja favori">
+                    </a>
+                    <a href="../controllers/details_recette_controller.php?id=<?= $recette['idMeal'] ?>">
+                        <h3><?= $recette['strMeal'] ?></h3>
+                    </a>
+                </div>
+                <?php
             }
             ?>
         </div>
     </main>
+
     <?php
     require_once __DIR__ . '/../views/nav_bar.php';
     ?>
