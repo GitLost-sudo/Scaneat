@@ -21,12 +21,12 @@ function list_recette_by_frigo($compte_id) {
     $sql = "SELECT * FROM frigo WHERE compte_id = :compte_id;";
     $stmt = $db->prepare($sql);
     $stmt->execute([ ':compte_id' => $compte_id]);
-    $frigo_items = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $frigo_items = $stmt->fetchAll();
 
     $filtered_recipes = [];
 
     foreach ($frigo_items as $item) {
-        $nom = strtolower($item['nom']);
+        $nom = strtolower(str_replace(' ', '', $item['nom']));
         $url = "https://www.themealdb.com/api/json/v1/1/search.php?s=$nom";
         $response = file_get_contents($url);
         $data = json_decode($response, true);

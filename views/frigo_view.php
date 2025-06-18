@@ -22,6 +22,9 @@
 <?php endif; ?>
 <?php require_once __DIR__.'/../views/header_org.php'; ?>
 
+
+
+<!-- Modal ajout produit -->
 <div id="addProductModal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
@@ -54,7 +57,6 @@
 </div>
 
 <?php 
-// tableau des icônes selon la catégorie
 $icones = [
     'fruit' => '../public/icons/fruits_icone.png',
     'légume' => '../public/icons/legumes_icone.png',
@@ -74,20 +76,17 @@ $icones = [
         <div class="container">
             <?php foreach ($produits as $produit): ?>
                 <div class="item">
-                    <!-- Image principale selon la catégorie -->
-                    <?php if (!empty($produit['categorie']) && isset($icones[$produit['categorie']])): ?>
+                    <?php if (!empty($produit['categorie'])): ?>
                         <img class="item_img" src="<?= $icones[$produit['categorie']] ?>" alt="catégorie">
                     <?php else: ?>
                         <img class="item_img" src="../public/icons/autre_icone.png" alt="produit">
                     <?php endif; ?>
 
-                    <a href="../controllers/supprimer_produit_controller.php?produit_id=<?= $produit['frigo_id'] ?>">
-                        <img class="icon_remove" src="../public/icons/remove.png" alt="icone de suppression">
-                    </a>
-
-                    <?php /* if (!empty($produit['categorie']) && isset($icones[$produit['categorie']])): ?>
-                        <img class="icon_categorie" src="<?= $icones[$produit['categorie']] ?>" alt="catégorie">
-                    <?php endif; */?>
+                    <a href="../controllers/supprimer_produit_controller.php?id=<?= $produit['frigo_id'] ?>" 
+   class="remove_product"
+   onclick="return confirm('Êtes-vous sûr ?')">
+   <img class="icon_remove" src="../public/icons/remove.png" alt="icone de suppression">
+</a>
 
                     <p class="item_name"><?= htmlspecialchars($produit['nom']) ?></p>
                     <p class="item_quantity">Quantité : <?= htmlspecialchars($produit['quantite']) ?></p>
@@ -103,25 +102,26 @@ $icones = [
 <?php require_once __DIR__.'/../views/nav_bar.php'; ?>
 
 <script>
+
+// Ajout produit
 document.getElementById("openModalBtn").addEventListener("click", function(event) {
-  event.preventDefault();
-  document.getElementById("addProductModal").style.display = "block";
+    event.preventDefault();
+    document.getElementById("addProductModal").style.display = "block";
 });
-
-document.querySelector(".close").addEventListener("click", function() {
-  document.getElementById("addProductModal").style.display = "none";
+document.querySelector("#addProductModal .close").addEventListener("click", function() {
+    document.getElementById("addProductModal").style.display = "none";
 });
-
 window.addEventListener("click", function(event) {
-  const modal = document.getElementById("addProductModal");
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
+    const modal = document.getElementById("addProductModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 });
 
+// Validation date dans le formulaire ajout produit
 const dateInput = document.querySelector('input[name="date_peremption"]');
 const errorMsg = document.getElementById('date-error');
-const form = document.querySelector('form');
+const form = document.querySelector('#addProductModal form');
 
 function isDateValid() {
     const selectedDate = new Date(dateInput.value);
@@ -148,4 +148,3 @@ form.addEventListener('submit', function(e) {
 </script>
 </body>
 </html>
-  
