@@ -1,7 +1,7 @@
 <?php
 
 try {
-    header('Location: /scaneat/views/authentification.php');
+    header('Location: /views/authentification.php');
 } catch (\Throwable $th) {
     throw $th;
 }
