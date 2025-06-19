@@ -24,7 +24,7 @@
 
 
             <div class="champ"> Nouveau Mot de Passe : <br>
-                <input type="text" name="password">
+                <input type="paassword" name="password">
             </div>
             <div class="champ"> Confirmation Mot de Passe: <br>
                 <input type="password" name="confirmation">
