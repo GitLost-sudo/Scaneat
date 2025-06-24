@@ -36,12 +36,12 @@ if (isset($_POST['valider']) && !empty($_POST['email'])) {
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'dakouriprince7@gmail.com';
-            $mail->Password = 'hsedtufznxsfqzqb'; // mot de passe d'application Gmail
+            $mail->Username = 'scaneat.esiea@gmail.com';
+            $mail->Password = 'elpoarutvqhprieb'; // mot de passe d'application Gmail
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
-            $mail->setFrom('dakouriprince7@gmail.com', 'ScanEat');
+            $mail->setFrom('scaneat.esiea@gmail.com', 'ScanEat');
             $mail->addAddress($email);
 
             $mail->isHTML(true);
