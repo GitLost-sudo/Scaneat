@@ -10,26 +10,28 @@
 </head>
 
 <body>
-   <header>
-            <div class="logo">
-                <img src="../img/ecriture.png">
-            </div>
-            <div class="home-icon">
-                <a href="../controllers/authentification_controller.php">
-                    <img src="../img/home.png">
-                </a>
-            </div>
-        </header>
-        
+  <header>
+    <div class="logo">
+      <img src="../img/ecriture.png">
+    </div>
+    <div class="home-icon">
+      <a href="../controllers/authentification_controller.php">
+        <img src="../img/home.png">
+      </a>
+    </div>
+  </header>
+
   <div class="page-container">
 
     <div class="titreInscription"> INSCRIPTION</div>
+
+
     <form action="inscription_controller.php" method="POST">
 
       <div class="champ"> Nom : <br>
         <input type="text" name="username" id="username">
       </div>
-      <div class="champ"> Email :  <br>
+      <div class="champ"> Email : <br>
         <input type="email" name="email" id="email">
       </div>
       <div class="champ"> Mot de passe : <br>

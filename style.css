@@ -3,6 +3,12 @@ body {
     margin: 0;
     padding: 0;
 }
+.Choix a {
+    text-decoration: none;
+  
+}
+
+
 
 .logoécriture {
     margin-top: 45%;
