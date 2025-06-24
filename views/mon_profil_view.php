@@ -30,7 +30,7 @@
             <input type="submit" value="Changer de mot de passe">
         </form>
         <?php if (isset($message)): ?>
-            <div style="margin-top:10px; text-align:center; color: <?= ($type_message === 'success') ? 'green' : 'red'; ?>;">
+            <div class="message <?= ($type_message === 'success') ? 'message_vert' : 'message_rouge' ?>">
                 <?= htmlspecialchars($message) ?>
             </div>
         <?php endif; ?>

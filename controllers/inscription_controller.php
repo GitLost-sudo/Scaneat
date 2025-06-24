@@ -43,7 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $mail->Password = 'elpoarutvqhprieb';
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                     $mail->Port = 587;
-
                     $mail->setFrom('scaneat.esiea@gmail.com', 'ScanEat');
                     $mail->addAddress($email);
 
