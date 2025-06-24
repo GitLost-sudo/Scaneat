@@ -18,7 +18,7 @@ if($_SERVER['REQUEST_METHOD']=='POST')
     $result = createUser($_POST['username'], $_POST['email'], $_POST['password']);
     
     if ($result === true) {
-        header('Location: /scaneat/controllers/connexion_controller.php'); #ne pas oublié de mettre la redirection vers la page de connexion
+        header('Location: /controllers/connexion_controller.php'); #ne pas oublié de mettre la redirection vers la page de connexion
         exit;
     } else {
 
