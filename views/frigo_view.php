@@ -10,13 +10,13 @@
 </head>
 <body>
 <?php if (isset($success)): ?>
-    <div style="background-color: #d4edda; color: #155724; padding: 10px; border: 1px solid #c3e6cb; border-radius: 5px; margin-bottom: 15px;">
+    <div class="succes">
         <?= htmlspecialchars($success) ?>
     </div>
 <?php endif; ?>
 
 <?php if (isset($error)): ?>
-    <div style="background-color: #f8d7da; color: #721c24; padding: 10px; border: 1px solid #f5c6cb; border-radius: 5px; margin-bottom: 15px;">
+    <div class="error">
          <?= htmlspecialchars($error) ?>
     </div>
 <?php endif; ?>
