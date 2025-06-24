@@ -19,7 +19,8 @@ error_reporting(E_ALL);
 require_once __DIR__ . "/../models/db_connect.php";
 require_once __DIR__ . "/../models/openfooddata_connect.php";
 require_once __DIR__ . "/../models/accueil_model.php";
-$alertes = urgent();
+$alertes = urgent($compte_id);
+
 
 // models
 require_once __DIR__ . "/../models/recette_model.php";
