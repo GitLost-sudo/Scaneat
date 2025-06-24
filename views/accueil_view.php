@@ -17,12 +17,12 @@
  <?php 
 // tableau des icones celon la catégorie des produits
 $icones = [
-    'Fruit' => '../public/icons/fruits_icone.png',
-    'Légume' => '../public/icons/legumes_icone.png',
-    'Viande' => '../public/icons/viandes_icone.png',
-    'Produit laitier' => '../public/icons/produits_laitiers_icone.png',
-    'Boisson' => '../public/icons/boisson_icone.png',
-    'Autre' => '../public/icons/autre_icone.png'
+    'fruit' => '../public/icons/fruits_icone.png',
+    'légume' => '../public/icons/legumes_icone.png',
+    'viande' => '../public/icons/viandes_icone.png',
+    'produit laitier' => '../public/icons/produits_laitiers_icone.png',
+    'boisson' => '../public/icons/boisson_icone.png',
+    'autre' => '../public/icons/autre_icone.png'
 ];
 ?>
 
@@ -32,7 +32,7 @@ $icones = [
     <?php foreach($alertes as $alerte): ?>
     <?php  
         $categorie = $alerte['categorie'];
-        $icone = $icones[$categorie] ?? $icones['autres']; 
+        $icone = $icones[$categorie] ?? $icones['autre']; 
     ?>
         <div class="notification">
            
