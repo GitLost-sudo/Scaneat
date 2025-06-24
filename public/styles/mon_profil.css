@@ -83,3 +83,13 @@ input[type="submit"]:hover{
 main p {
     margin: 0;
 }
+.message {
+    margin-top: 10px;
+    text-align: center;
+}
+.message_rouge  {
+    color: red;
+}
+.message_vert {
+    color: green;
+}
