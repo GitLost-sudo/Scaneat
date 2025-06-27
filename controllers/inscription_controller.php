@@ -71,6 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $mail->send();
                     $message = "Votre compte a été créé et un mail de confirmation a été envoyé.";
                     $type_message = "success";
+                    header("Location: connexion_controller.php");
                 } catch (Exception $e) {
                     $message = "Compte créé, mais le mail de confirmation n'a pas pu être envoyé.";
                     $type_message = "success";
