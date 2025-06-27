@@ -28,6 +28,10 @@ $icones = [
 <!-- test fin -->
 <div class="notifications-container">
 <!-- Affichage des alertes de péremption -->
+<?php if (empty($alertes)): ?>
+    
+        <p id="expir">Aucun produit n'est proche de l'expiration.</p>
+    <?php else: ?>
     <?php foreach($alertes as $alerte): ?>
     <?php  
         $categorie = $alerte['categorie'];
@@ -41,8 +45,9 @@ $icones = [
            
         </div>
     <?php endforeach; ?>
+    <?php endif; ?>
 </div>
-<h2>Recomandations de recettes</h2>
+<h2>Recommandations de recettes</h2>
 <div class="recette_container">
     <?php
     foreach ($recettes as $recette) {

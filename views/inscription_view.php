@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Page d'inscription</title>
-
   <link rel="stylesheet" href="../style.css">
 </head>
 
@@ -23,7 +22,8 @@
 
   <div class="page-container">
 
-    <div class="titreInscription"> INSCRIPTION</div>
+    <div class="titreInscription">INSCRIPTION</div>
+
 
 
     <form action="inscription_controller.php" method="POST">
@@ -40,6 +40,11 @@
       <input type="submit" value="Create" class="ButtonCreation" />
 
     </form>
+    <?php if (isset($message) && $message !== ""): ?>
+      <div style="color: <?= ($type_message === 'success') ? 'green' : 'red'; ?>; text-align:center; margin-bottom:10px;">
+        <?= htmlspecialchars($message) ?>
+      </div>
+    <?php endif; ?>
 
     <footer>
       <img src="../img/carotte2.png">
@@ -47,7 +52,6 @@
       <img src="../img/pomme2.png">
     </footer>
   </div>
-
 </body>
 
 </html>
