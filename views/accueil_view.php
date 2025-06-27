@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scan'Eat Acceuil</title>
+    <title>Scan'Eat Accueil</title>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="..\public\styles\accueil.css">
     <link rel="stylesheet" href="../public/styles/common.css">
@@ -75,7 +75,9 @@ $icones = [
     }
     ?>
 </div>
+<script src="../notification/app.js"></script>
 </main>
     <?php include '../views/nav_bar.php'; ?>
+    
 </body>
 </html>

@@ -74,6 +74,7 @@
             <input type="submit" value="J'ai terminé la recette">
         </form>
     </main>
+    <script src="../notification/app.js"></script>
     <?php
     require_once __DIR__.'/../views/nav_bar.php';
     ?>

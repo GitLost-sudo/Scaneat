@@ -151,5 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 </script>
+<script src="../notification/app.js"></script>
 </body>
 </html>
