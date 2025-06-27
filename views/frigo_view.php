@@ -71,7 +71,7 @@ $icones = [
     <h1>🧊Mon Frigo🧊</h1>
 
     <?php if (!isset($produits) || empty($produits)): ?>
-        <p style="color: orange;">Aucun produit à afficher.</p>
+        <p style="color: orange;text-align :center;font-size: 2em;">Aucun produit à afficher.</p>
     <?php else: ?>
         <div class="container">
             <?php foreach ($produits as $produit): ?>
