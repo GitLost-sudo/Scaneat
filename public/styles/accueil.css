@@ -22,7 +22,7 @@ h2{
     font-size: 3vh;
     font-family: 'Archivo Black', sans-serif;
     margin-top: 3vh;
-    -webkit-text-stroke: 0.04em rgb(95, 95, 95);
+    -webkit-text-stroke: 0.04em rgb(0, 0, 0);
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
 .notifications-container {
