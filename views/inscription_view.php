@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -25,11 +24,7 @@
 
     <div class="titreInscription">INSCRIPTION</div>
 
-    <?php if (isset($message) && $message !== "") : ?>
-      <div style="color: <?= ($type_message === 'success') ? 'green' : 'red'; ?>; text-align:center; margin-bottom:10px;">
-        <?= htmlspecialchars($message) ?>
-      </div>
-    <?php endif; ?>
+
 
     <form action="inscription_controller.php" method="POST">
 
@@ -45,6 +40,11 @@
       <input type="submit" value="Create" class="ButtonCreation" />
 
     </form>
+    <?php if (isset($message) && $message !== ""): ?>
+      <div style="color: <?= ($type_message === 'success') ? 'green' : 'red'; ?>; text-align:center; margin-bottom:10px;">
+        <?= htmlspecialchars($message) ?>
+      </div>
+    <?php endif; ?>
 
     <footer>
       <img src="../img/carotte2.png">
@@ -53,4 +53,5 @@
     </footer>
   </div>
 </body>
+
 </html>
