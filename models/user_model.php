@@ -19,22 +19,3 @@ function createUser($username, $email, $password)
     ));
     return true;
 }
-/*
-function loginUser($email, $password) {
-    global $db;
-
-    // On autorise la connexion avec l'email OU le nom d'utilisateur
-    $sql = "SELECT * FROM compte WHERE email = :email";
-    $query = $db->prepare($sql);
-    $query->execute([
-        ':email' => $email
-    ]);
-    $user = $query->fetch();
-
-    if ($user && password_verify($password, $user['password'])) {
-        return "Connexion réussie";
-    } else {
-        return "Identifiants incorrects";
-    }
-}
-*/

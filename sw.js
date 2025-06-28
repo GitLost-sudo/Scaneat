@@ -10,6 +10,6 @@ self.addEventListener('activate', event => {
 self.addEventListener('notificationclick', event => {
   event.notification.close();
   event.waitUntil(
-    clients.openWindow('/') // redirige vers le site
+    clients.openWindow('/scaneat/controllers/frigo_controller.php') // redirige vers le site
   );
 });

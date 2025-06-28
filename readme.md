@@ -187,3 +187,40 @@ favoris {
     int recette_id
 }
 ```
+
+encore un autre
+``` mermaid
+erDiagram
+    utilisateur {
+        int compte_id PK
+        string email
+        string password
+    }
+
+    frigo {
+        int frigo_id PK
+    }
+
+    frigo_user {
+        int compte_id FK
+        int frigo_id FK
+    }
+
+    produit {
+        int produit_id PK
+        int code_barre
+        string name
+        string categorie
+    }
+
+    produit_dans_frigo {
+        int frigo_id FK
+        int produit_id FK
+        date date_de_peremption
+        int quantite
+    }
+
+    utilisateur ||--o{ frigo_user : possede
+    frigo ||--o{ frigo_user : appartient
+    frigo ||--o{ produit_dans_frigo : stocke
+    produit ||--o{ produit_dans_frigo : reference

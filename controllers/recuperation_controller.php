@@ -2,6 +2,7 @@
 
 //models
 require_once __DIR__ . '/../models/recuperation_model.php';
+
 //mail 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -17,7 +18,7 @@ if (isset($_POST['valider']) && !empty($_POST['email'])) {
     $email = htmlspecialchars($_POST['email']);
 
     // Vérifie si l'email existe dans la BDD
-    $req = $connexion->prepare("SELECT compte_id FROM compte WHERE email = ?");
+    $req = $db->prepare("SELECT compte_id FROM compte WHERE email = ?");
     $req->execute([$email]);
     $data = $req->fetch();
 
@@ -26,8 +27,23 @@ if (isset($_POST['valider']) && !empty($_POST['email'])) {
         $lien = "http://localhost/scaneat/controllers/réinitialisation_controller.php?id=" . urlencode($id);
 
         // Construction du message HTML
-        $message = "Voici le lien pour réinitialiser votre mot de passe : <a href='$lien' style='color:green;'>cliquez ici pour réinitialiser votre mot de passe</a>";
-
+        $message = '
+    <div style="font-family: Arial, sans-serif; background: #f9f9f9; padding: 30px; border-radius: 10px; text-align: center;">
+        <h2 style="color: #27ae60;">Réinitialisation de votre mot de passe</h2>
+        <p style="font-size: 17px; color: #333;">
+            Nous avons reçu une demande de réinitialisation de votre mot de passe.<br>
+            Cliquez sur le bouton ci-dessous pour choisir un nouveau mot de passe :
+        </p>
+        <a href="' . $lien . '" style="display:inline-block; margin: 20px auto; padding: 12px 28px; background: #27ae60; color: #fff; text-decoration: none; border-radius: 6px; font-size: 18px; font-weight: bold;">
+            Réinitialiser mon mot de passe
+        </a>
+        <p style="font-size: 14px; color: #888; margin-top: 30px;">
+            Si vous n\'êtes pas à l\'origine de cette demande, vous pouvez ignorer ce message.<br>
+            <br>
+            L\'équipe <b>ScanEat</b>
+        </p>
+    </div>
+';
         $type_message = "success";
 
         // Envoi de l'email
@@ -36,12 +52,12 @@ if (isset($_POST['valider']) && !empty($_POST['email'])) {
             $mail->isSMTP();
             $mail->Host = 'smtp.gmail.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'dakouriprince7@gmail.com';
-            $mail->Password = 'hsedtufznxsfqzqb'; // mot de passe d'application Gmail
+            $mail->Username = 'scaneat.esiea@gmail.com';
+            $mail->Password = 'elpoarutvqhprieb'; // mot de passe d'application Gmail
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $mail->Port = 587;
 
-            $mail->setFrom('dakouriprince7@gmail.com', 'ScanEat');
+            $mail->setFrom('scaneat.esiea@gmail.com', 'ScanEat');
             $mail->addAddress($email);
 
             $mail->isHTML(true);

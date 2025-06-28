@@ -26,3 +26,4 @@ CREATE TABLE `favoris` (
   `recette_id` INT NOT NULL,
   FOREIGN KEY (`compte_id`) REFERENCES `compte`(`compte_id`)
 );
+ SELECT*FROM compte;
