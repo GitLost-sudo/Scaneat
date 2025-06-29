@@ -14,10 +14,10 @@
     ?>
     <main>
         <h1>Scanner le code barre</h1>
+        <div id="produit-info" style="text-align: center"></div>
         <section>
-            <div id="scanner-container" style="width:100%; max-width:400px; margin:auto;"></div>
-            <p id="resultat-scan" style="text-align:center;"></p>
-            <div id="produit-info" style="text-align: center; margin-top: 20px;"></div>
+            <div id="scanner-container"></div>
+            <p id="resultat-scan"   ></p>
         </section>
         <?php
         if (!isset($error)) { // undefined
@@ -58,7 +58,7 @@
 
     <div>
         <label for="date_peremption"><span>Date de péremption :</span></label>
-        <input type="date" name="date_peremption" required><br>
+        <input type="date" name="date_peremption" required>
     </div>
 
     <input type="submit" value="Ajouter">
@@ -119,38 +119,45 @@ document.addEventListener('DOMContentLoaded', () => {
         fetch(`https://world.openfoodfacts.org/api/v0/product/${code}.json`)
             .then(response => response.json())
             .then(data => {
-                if (data.status === 1) {
-                    const product = data.product;
-                    const nomProduit = product.product_name || "";
-                    const calories = product.nutriments["energy-kcal_100g"] || "";
+            if (data.status === 1) {
+                const product = data.product;
+                const nomProduit = product.product_name || "";
+                const calories = product.nutriments["energy-kcal_100g"] || "";
 
-                    // Affichage visuel
-                    document.getElementById("produit-info").innerHTML = `
-                        ${product.image_url ? `<img src="${product.image_url}" alt="Image du produit" style="max-width: 150px;">` : ""} 
-                    `;//ça va afficher l'image venant de la base de données
+                // Affichage visuel
+                document.getElementById("produit-info").innerHTML = `
+                ${product.image_url ? `<img src="${product.image_url}" alt="Image du produit" style="max-width: 150px;">` : ""} 
+                `;//ça va afficher l'image venant de la base de données
 
-                    // Remplissage du formulaire
-                    document.getElementById("nom-produit").textContent = nomProduit;
-                    document.getElementById("input-nom").value = nomProduit;
-                    document.getElementById("input-code-barre").value = code;
-                    document.getElementById("input-calories").value = calories;
-                    document.getElementById("calories-affichees").textContent = calories;
-
-                } else {
-                    document.getElementById("produit-info").innerHTML = `<p style="color:red;">Produit non trouvé.</p>`;
+                // Remplissage du formulaire
+                document.getElementById("nom-produit").textContent = nomProduit;
+                document.getElementById("input-nom").value = nomProduit;
+                document.getElementById("input-code-barre").value = code;
+                document.getElementById("input-calories").value = calories;
+                // Met à jour l'affichage visible des calories
+                const caloriesSpan = document.querySelector('p span');
+                if (caloriesSpan && calories) {
+                    caloriesSpan.nextSibling.textContent = ` ${calories}`;
                 }
 
-                Quagga.stop();
+            } else {
+                document.getElementById("produit-info").innerHTML = `<p style="color:red;">Produit non trouvé.</p>`;
+            }
+
+            Quagga.stop();
             })
             .catch(err => {
-                console.error("Erreur API :", err);
-                document.getElementById("produit-info").innerHTML = `<p style="color:red;">Erreur lors de la récupération des données.</p>`;
-                Quagga.stop();
+            console.error("Erreur API :", err);
+            document.getElementById("produit-info").innerHTML = `<p style="color:red;">Erreur lors de la récupération des données. Veuillez réessayer</p>`;
+            Quagga.stop();
+            // Rafraîchissement de la page après 2 secondes en cas d'erreur
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
             });
     });
 });
 
 </script>
-<script src="../notification/app.js"></script>
 </body>
 </html>

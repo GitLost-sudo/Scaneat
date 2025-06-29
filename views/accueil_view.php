@@ -20,8 +20,8 @@ $icones = [
     'fruit' => '../public/icons/fruits_icone.png',
     'légume' => '../public/icons/legumes_icone.png',
     'viande' => '../public/icons/viandes_icone.png',
-    'produit laitier' => '../public/icons/produits_laitiers_icone.png',
-    'boisson' => '../public/icons/boisson_icone.png',
+    'produit_laitiers' => '../public/icons/produits_laitiers_icone.png',
+    'boissons' => '../public/icons/boisson_icone.png',
     'autre' => '../public/icons/autre_icone.png'
 ];
 ?>
