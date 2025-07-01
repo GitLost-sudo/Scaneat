@@ -115,7 +115,7 @@ input[type="submit"] {
   background-color: #2e7d32;
   color: white;
   border: none;
-  padding: 5000000px;
+  padding: 10%;
   border-radius: 12px;
   font-size: 1rem;
   cursor: pointer;
@@ -248,12 +248,3 @@ footer img:hover {
   }
 }
 
-/*RecuperationMDP*/
-h1 .TitreRecuperationMDP {
- text-align: center;
- padding: 44430%;
-}
-
-form .BlocFormulaire{
-  width: 5000px;
-}
