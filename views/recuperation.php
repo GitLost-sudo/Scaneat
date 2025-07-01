@@ -20,15 +20,18 @@
                 </a>
             </div>
         </header>
-        <div class="TitreRecuperationMDP"> Email du compte que vous voulez récupérer :</div>
+        <h1>
+            <div class="titreInscription"> Email du compte que vous voulez récupérer :</div>
+        </h1>
         <form action="../controllers/recuperation_controller.php" method="POST">
 
             <div class="BlocFormulaire">
                 <div class="champ">
                     <input type="text" name="email">
                 </div>
-                <input type="submit" value="Envoyer" name="valider" class="ButtonCreation">
-
+              
+                    <input type="submit" value="Envoyer" name="valider" class="ButtonCreation">
+                
             </div>
             <?php if (!empty($message)): ?>
                 <div
@@ -38,11 +41,7 @@
             <?php endif; ?>
 
         </form>
-        <footer>
-            <img src="../img/carotte2.png">
-            <img src="../img/fromage2.png">
-            <img src="../img/pomme2.png">
-        </footer>
+  
     </div>
 </body>
 
