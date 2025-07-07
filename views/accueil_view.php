@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scan'Eat Acceuil</title>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="..\public\styles\accueil.css">
-    <link rel="stylesheet" href="../public/styles/common.css">
+     <link rel="stylesheet" href="../public/styles/accueil.css">
+   <link rel="stylesheet" href="../public/styles/common.css"> 
 </head>
 <body>
 <?php include '../views/header_org.php'; ?>
