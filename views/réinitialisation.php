@@ -24,7 +24,7 @@
 
 
             <div class="champ"> Nouveau Mot de Passe : <br>
-                <input type="paassword" name="password">
+                <input type="password" name="password">
             </div>
             <div class="champ"> Confirmation Mot de Passe: <br>
                 <input type="password" name="confirmation">
@@ -40,11 +40,7 @@
 
 
         </form>
-        <footer>
-            <img src="../img/carotte2.png">
-            <img src="../img/fromage2.png">
-            <img src="../img/pomme2.png">
-        </footer>
+
     </div>
 </body>
 

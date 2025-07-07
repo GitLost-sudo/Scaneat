@@ -146,5 +146,6 @@ form.addEventListener('submit', function(e) {
     }
 });
 </script>
+<script src="../notification/app.js"></script>
 </body>
 </html>
