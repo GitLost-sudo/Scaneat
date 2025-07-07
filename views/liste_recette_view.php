@@ -104,6 +104,7 @@
     require_once __DIR__ . '/../views/nav_bar.php';
     ?>
     <script src="../public/js/script_liste_recette.js"></script>
+    <script src="../notification/app.js"></script>
 </body>
 
 </html>

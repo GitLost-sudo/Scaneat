@@ -70,7 +70,7 @@
             ?>
         </div>
     </main>
-
+    <script src="../notification/app.js"></script>
     <?php
     require_once __DIR__ . '/../views/nav_bar.php';
     ?>
