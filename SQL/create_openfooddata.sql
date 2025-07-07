@@ -9,5 +9,3 @@ CREATE TABLE `produit` (
   `image_url` text DEFAULT NULL
 ) 
 
-
- 

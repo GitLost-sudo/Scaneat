@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scan'Eat Acceuil</title>
+    <title>Scan'Eat Accueil</title>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="..\public\styles\accueil.css">
-    <link rel="stylesheet" href="../public/styles/common.css">
+     <link rel="stylesheet" href="../public/styles/accueil.css">
+   <link rel="stylesheet" href="../public/styles/common.css"> 
 </head>
 <body>
 <?php include '../views/header_org.php'; ?>
@@ -20,8 +20,8 @@ $icones = [
     'fruit' => '../public/icons/fruits_icone.png',
     'légume' => '../public/icons/legumes_icone.png',
     'viande' => '../public/icons/viandes_icone.png',
-    'produit laitier' => '../public/icons/produits_laitiers_icone.png',
-    'boisson' => '../public/icons/boisson_icone.png',
+    'produit_laitiers' => '../public/icons/produits_laitiers_icone.png',
+    'boissons' => '../public/icons/boisson_icone.png',
     'autre' => '../public/icons/autre_icone.png'
 ];
 ?>
@@ -29,10 +29,14 @@ $icones = [
 <!-- test fin -->
 <div class="notifications-container">
 <!-- Affichage des alertes de péremption -->
+<?php if (empty($alertes)): ?>
+    
+        <p id="expir">Aucun produit n'est proche de l'expiration.</p>
+    <?php else: ?>
     <?php foreach($alertes as $alerte): ?>
     <?php  
         $categorie = $alerte['categorie'];
-        $icone = $icones[$categorie] ?? $icones['autres']; 
+        $icone = $icones[$categorie] ?? $icones['autre']; 
     ?>
         <div class="notification">
            
@@ -42,8 +46,9 @@ $icones = [
            
         </div>
     <?php endforeach; ?>
+    <?php endif; ?>
 </div>
-<h2>Recomandations de recettes</h2>
+<h2>Recommandations de recettes</h2>
 <div class="recette_container">
     <?php
     foreach ($recettes as $recette) {
@@ -75,7 +80,9 @@ $icones = [
     }
     ?>
 </div>
+<script src="../notification/app.js"></script>
 </main>
     <?php include '../views/nav_bar.php'; ?>
+    
 </body>
 </html>

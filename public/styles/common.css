@@ -18,7 +18,7 @@ main {
     height: 80vh;
     overflow-y: scroll;
     scrollbar-width: none;
-    background-image: url("../img/background_test1.jpg");
+
 }
 .header_icon, .nav_icon{
     width: 2em;

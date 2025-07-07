@@ -1,5 +1,5 @@
 body{
-    background-image: url("../img/background_test1.jpg");
+  
     background-size: cover;
     background-position: center;
 }
@@ -10,18 +10,20 @@ h1{
     font-family: 'Archivo Black', sans-serif;
     margin-top: 7vh;
     -webkit-text-stroke: 0.04em black;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
 h1 span{
     color: green;
     -webkit-text-stroke: 0.01em black;
 }
 h2{
-    color: white;
+    color: rgb(255, 255, 255);
     text-align: center;
     font-size: 3vh;
     font-family: 'Archivo Black', sans-serif;
     margin-top: 3vh;
-    -webkit-text-stroke: 0.04em black;
+    -webkit-text-stroke: 0.04em rgb(0, 0, 0);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
 }
 .notifications-container {
     border: 2px solid black;
@@ -29,12 +31,15 @@ h2{
     background-color: navajowhite;
     flex-direction: column;
     overflow-y: auto;
-   max-height: 20vh;
+   max-height: 60vh;
     gap: 1vw;
     padding: 1vh;
    
 }
-
+#expir{
+    color: rgb(132, 126, 126);
+    text-align: center;
+}
 .notification {
     flex: 0 0 auto; /* Prevent flex items from growing or shrinking */
     display: grid; 
