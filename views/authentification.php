@@ -12,10 +12,14 @@
   <div class="page-container fade-in">
     <div class="content">
       <div class="logoécriture bounce">
-        <img src="../img/logo.png" alt="Logo">
-        <img src="../img/ecriture.png" alt="ScanEat">
-        
+
+        <img src="../img/ecriture.png" alt="ScanEat" height="10000px">
+
       </div>
+      <div class="pics">
+        <img src="../img/logo.png" alt="Logo" height="300px">
+      </div>
+
 
       <div class="Choix">
         <a href="../controllers/connexion_controller.php">
