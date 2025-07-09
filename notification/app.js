@@ -1,6 +1,6 @@
 // Vérifie que le navigateur supporte les notifications + SW
 if ('serviceWorker' in navigator && 'Notification' in window) {
-  navigator.serviceWorker.register('/scaneat/sw.js')
+  navigator.serviceWorker.register('/scaneat.exp.esiea.fr/sw.js')
     .then(reg => {
       console.log('Service Worker enregistré');
       Notification.requestPermission().then(permission => {
