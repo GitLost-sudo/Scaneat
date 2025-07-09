@@ -24,7 +24,7 @@ if (isset($_POST['valider']) && !empty($_POST['email'])) {
 
     if ($data) {
         $id = $data['compte_id'];
-        $lien = "http://localhost/scaneat/controllers/réinitialisation_controller.php?id=" . urlencode($id);
+        $lien = "https://scaneat.exp.esiea.fr/controllers/réinitialisation_controller.php?id=" . urlencode($id);
 
         // Construction du message HTML
         $message = '
