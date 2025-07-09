@@ -56,6 +56,24 @@
   </div>
 </div>
 
+<!-- Modal modif produit -->
+<div id="modifProductModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2>Modifier un produit</h2>
+    <form id="modifForm" action="../controllers/modifier_produit_controller.php" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="frigo_id" id="modif_frigo_id">
+
+        <label for="quantite">Quantité :</label>
+        <input type="number" name="quantite" id="modif_quantite" required><br>
+
+        <label for="date_peremption">Date de péremption : </label>
+        <input type="date" name="date_peremption" id="modif_date" required><br>
+
+        <input type="submit" value="Modifier" style="background-color: #498A0C">
+    </form>
+  </div>
+</div>
 <?php 
 $icones = [
     'fruit' => '../public/icons/fruits_icone.png',
@@ -87,10 +105,16 @@ $icones = [
    onclick="return confirm('Êtes-vous sûr ?')">
    <img class="icon_remove" src="../public/icons/remove.png" alt="icone de suppression">
 </a>
-
+<a href="../controllers/modifier_produit_controller.php?id=<?= $produit['frigo_id'] ?>" 
+   class="modify_product"
+   onclick="return confirm('Êtes-vous sûr ?')">
+   <img class="icon_modify" src="../public/icons/modifier.png" alt="icone de modification">
+</a>
+                        <div class="text">
                     <p class="item_name"><?= htmlspecialchars($produit['nom']) ?></p>
                     <p class="item_quantity">Quantité : <?= htmlspecialchars($produit['quantite']) ?></p>
                     <p class="item_date"><?= htmlspecialchars($produit['date_peremption']) ?></p>
+                    </div>
                 </div>
             <?php endforeach; ?>
         </div>
@@ -102,7 +126,6 @@ $icones = [
 <?php require_once __DIR__.'/../views/nav_bar.php'; ?>
 
 <script>
-
 // Ajout produit
 document.getElementById("openModalBtn").addEventListener("click", function(event) {
     event.preventDefault();
@@ -118,8 +141,8 @@ window.addEventListener("click", function(event) {
     }
 });
 
-// Validation date dans le formulaire ajout produit
-const dateInput = document.querySelector('input[name="date_peremption"]');
+// Validation date ajout produit
+const dateInput = document.querySelector('#addProductModal input[name="date_peremption"]');
 const errorMsg = document.getElementById('date-error');
 const form = document.querySelector('#addProductModal form');
 
@@ -132,17 +155,41 @@ function isDateValid() {
 }
 
 dateInput.addEventListener('input', () => {
-    if (!isDateValid()) {
-        errorMsg.textContent = "Ce produit est déjà périmé !";
-    } else {
-        errorMsg.textContent = "";
-    }
+    errorMsg.textContent = isDateValid() ? "" : "Ce produit est déjà périmé !";
 });
 
 form.addEventListener('submit', function(e) {
     if (!isDateValid()) {
         e.preventDefault();
         errorMsg.textContent = "⛔ Veuillez choisir une date de péremption valide (aujourd'hui ou plus tard).";
+    }
+});
+
+// 🔧 Modification produit
+document.querySelectorAll(".modify_product").forEach(btn => {
+    btn.addEventListener("click", function(e) {
+        e.preventDefault();
+
+        const item = this.closest(".item");
+        const id = this.getAttribute("href").split("id=")[1];
+        const quantite = item.querySelector(".item_quantity").textContent.replace("Quantité : ", "").trim();
+        const date = item.querySelector(".item_date").textContent.trim();
+
+        document.getElementById("modif_frigo_id").value = id;
+        document.getElementById("modif_quantite").value = quantite;
+        document.getElementById("modif_date").value = date;
+
+        document.getElementById("modifProductModal").style.display = "block";
+    });
+});
+
+document.querySelector("#modifProductModal .close").addEventListener("click", function() {
+    document.getElementById("modifProductModal").style.display = "none";
+});
+window.addEventListener("click", function(event) {
+    const modal = document.getElementById("modifProductModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
     }
 });
 </script>
