@@ -90,6 +90,7 @@ section {
 
 input[type="submit"] {
     grid-column: 1 / 3;
+    transform: translateY(-60%);
 }
 form div {
     display: flex;
