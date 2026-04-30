@@ -1,5 +1,5 @@
 # Scan'Eat
-
+Ne pas oublier que le fichier openfoodfacts n'a pas été importé
 ## Présentation
 
 **Un scan suffit pour éviter l'oubli !**
